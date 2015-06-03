@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="zeppelinGsocApp">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Madhuka Udantha">
+    <link rel="icon" href="favicon.ico"/>
+
+    <title>Apache Zeppelin GSOC15</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="css/cover.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <div class="site-wrapper">
+
+      <div class="site-wrapper-inner">
+
+        <div class="cover-container">
+
+          <div class="masthead clearfix">
+            <div class="inner">
+              <h3 class="masthead-brand">Apache Zeppelin - GSoC 2015</h3>
+              <nav>
+                <ul class="nav masthead-nav">
+                  <li class="active"><a href="#/home">Home</a></li>
+                  <li><a href="#/milestone01">Milestone-01</a></li>
+                  <li><a href="#/contact">Contact</a></li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+
+		      <div ng-view></div>
+
+          <div class="mastfoot">
+            <div class="inner">
+              <p>Source code in <a href="https://github.com/Madhuka/apache-zeppelin-gsoc">github</a>, by <a href="twitter.com/madhukaudantha">udantha</a>.</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src=" node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <!--angularJS JavaScript-->
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="node_modules/angular-route/angular-route.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/controllers.js"></script>
+    <!-- Top Menu nav interaction -->
+    <script>
+	    $(".nav a").on("click", function(){
+	    $(".nav").find(".active").removeClass("active");
+	    $(this).parent().addClass("active");
+		});
+	</script>
+
+  </body>
+</html>

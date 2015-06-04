@@ -49,7 +49,7 @@ c: [{
 googleChart.options = {
     "isStacked": "true",
     "fill": 20,
-    "height": 200,
+    "height": 300,
     "displayExactValues": true,
     "vAxis": {
 "gridlines": {

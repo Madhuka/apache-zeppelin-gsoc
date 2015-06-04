@@ -35,18 +35,23 @@ chartControllers.controller('chartCtrl', ['$scope',
         };
 
         //setting ncd3 labels and data 
-        $scope.loadCarDatatoNVD3 = function(fileName, labelx) {
-            console.log($scope.data[0].values)
+        $scope.loadCarDatatoNVD3 = function(fileName) {
+            loadYAxisLabel(fileName);
             d3.csv("data/" + fileName + ".csv", function(d) {
 
                 return {
-                    label: d[labelx],
+                    label: d.Make,
                     value: +d.Length,
                     valuex: +d.No
                 }
             }, function(error, rows) {
                 $scope.data[0].values = rows;
             });
+            $scope.options.chart.xAxis = {
+                'tickFormat': function(d) {
+                    return nvd3AxisLabels[d]
+                }
+            };
 
         };
 
@@ -85,16 +90,18 @@ chartControllers.controller('chartCtrl', ['$scope',
             $scope.chart.type = gchartType;
             $scope.chartConfig.options.chart.type = hchartType;
             $scope.options.chart.type = dchartType;
-            //nvd3 
-            var nvdLabels = ["A", "B", "C", "D"];
+            //nvd3             
+            loadYAxisLabel($scope.fileName);
+            var nvdLabels = nvd3AxisLabels;
             $scope.options.chart.xAxis = {
-                'axisLabel': 'Models'
+                'axisLabel': 'Make'
             };
             $scope.options.chart.xAxis = {
                 'tickFormat': function(d) {
                     return nvdLabels[d]
                 }
             };
+            
         };
 
         //switching chart libraries
@@ -104,6 +111,9 @@ chartControllers.controller('chartCtrl', ['$scope',
             $scope.nvd3Show = false;
             $scope[chartLib] = true;
         };
+
+        //End of the scope level
+        var nvd3AxisLabels = {};
 
         //loading csv file data set for chart
         loadFile = function(fileName) {
@@ -117,6 +127,16 @@ chartControllers.controller('chartCtrl', ['$scope',
                 };
             }, function(error, rows) {
                 console.log(rows);
+            });
+        };        
+        //nvd3 chartting 
+        loadYAxisLabel = function(fileName) {
+
+            d3.csv("data/" + fileName + ".csv", function(d) {
+                return d.Make;
+            }, function(error, rows) {
+                //console.log(rows);
+                nvd3AxisLabels = rows;
             });
         };
     }

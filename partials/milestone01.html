@@ -1,7 +1,50 @@
-<div class="inner cover inx">
-     <h3 class="cover-heading">MileStone - 01</h3>
-     <p class="lead"></p>
-     <p class="lead">
-       <a href="https://cwiki.apache.org/confluence/display/ZEPPELIN/GoogleSummerOfCode#GoogleSummerOfCode-COMDEV-119ZeppelinGSoCProject:addmoreD3visualization" class="btn btn-lg btn-default">Read more</a>
-     </p>
+<div class="inner cover">
+
+
+    <h3 class="cover-heading">MileStone - 01</h3>
+    <!--chart libraries need to pick-->
+    <div>        
+        <label>Chart Library</label>
+        <div class="btn-group">
+            <a class="btn btn-default" ng-click="switchChartLib('highChartChartShow')"><i class="fa fa-h-square"> HighChart</i></a>
+            <a class="btn btn-default" ng-click="switchChartLib('googlrChartShow')"><i class="fa fa-google"> GooglrChart</i></a>
+            <a class="btn btn-default" ng-click="switchChartLib('nvd3Show')"><i class="fa fa-align-right"> NVD3 Chart</i></a>
+        </div>
+    </div>
+
+    <!--sample data set is to pick from csv file-->
+    <div>
+        <label>Sample CSV Data Set:
+            <input type="text" ng-model="fileName" />
+        </label>
+        <div class="btn-group">
+            <a class="btn btn-default" ng-click="loadCarDatatoHighChart(fileName)"><i class="fa fa-h-square"> load</i></a>
+            <a class="btn btn-default" ng-click="loadCarDatatoGoogle(fileName)"><i class="fa fa-google"> load</i></a>
+            <a class="btn btn-default" ng-click="loadCarDatatoNVD3(fileName,'Make')"><i class="fa fa-align-right"> load</i></a>
+            <a class="btn btn-default" ng-click="loadData(fileName)"><i class="fa fa-download"> load</i></a>
+        </div>
+    </div>
+
+    <!--chart type can be picked-->
+    <br>
+    <label>Chart Type</label>
+    <div class="btn-group">
+        <a class="btn btn-default" ng-click="switchChartType('LineChart','line','lineChart')"><i class="fa fa-line-chart"> Line Chart</i></a>
+        <a class="btn btn-default" ng-click="switchChartType('BarChart','bar','discreteBarChart')"><i class="fa fa-bar-chart"> Bar Chart</i></a>
+    </div>
+
+    <!--charts-->
+    <div class="box" ng-show="highChartChartShow">
+        <p class="lead">HighChart</p>
+        <highchart id="chart1" config="chartConfig"></highchart>
+    </div>
+    <div class="box" ng-show="googlrChartShow">
+        <p class="lead">Google Chart</p>
+        <div google-chart chart="chart" style="{{chart.cssStyle}}" />
+    </div>
+    <div class="box" ng-show="nvd3Show">
+        <p class="lead">NVD3 Chart</p>
+        <nvd3 options='options' data='data'></nvd3>
+    </div>
+
 </div>

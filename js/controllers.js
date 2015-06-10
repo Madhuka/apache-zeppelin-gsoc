@@ -4,49 +4,29 @@ chartControllers.controller('chartCtrl', ['$scope',
     function($scope) {
         //sample csv file name 
         $scope.fileName = 'car';
+        $scope.chartType = 'HighChart';
 
         //csv file data is load for all charts libraries
         $scope.loadData = function() {
+            console.log('ccccssccc');
             fileName = $scope.fileName
-            console.log(loadFile(fileName));
+            //loadFile(fileName);
             $scope.loadCarDatatoHighChart(fileName);
-            $scope.loadCarDatatoNVD3(fileName);
-            $scope.loadCarDatatoGoogle(fileName);
+
         };
 
 
 
         //setting high chart labels and data seriees 
         $scope.loadCarDatatoHighChart = function(fileName) {
-            console.log($scope.chartConfig.series[0].data)
-            d3.csv("data/" + fileName + ".csv", function(d) {
-
-                return d.Make;
-            }, function(error, rows) {
-                $scope.chartConfig.xAxis.categories = rows;
-            });
-            d3.csv("data/" + fileName + ".csv", function(d) {
-
-                return +d.Length;
-            }, function(error, rows) {
-                console.log(rows);
-                $scope.chartConfig.series[0].data = rows;
-            });
+            console.log('cccc');
+            renderChart(highxChart, data);
         };
 
         //setting ncd3 labels and data 
         $scope.loadCarDatatoNVD3 = function(fileName) {
             loadYAxisLabel(fileName);
-            d3.csv("data/" + fileName + ".csv", function(d) {
-
-                return {
-                    label: d.Make,
-                    value: +d.Length,
-                    valuex: +d.No
-                }
-            }, function(error, rows) {
-                $scope.data[0].values = rows;
-            });
+            renderChart(NVD3Chart, data);
             $scope.options.chart.xAxis = {
                 'tickFormat': function(d) {
                     return nvd3AxisLabels[d]
@@ -57,25 +37,10 @@ chartControllers.controller('chartCtrl', ['$scope',
 
         //setting google chart labels and data 
         $scope.loadCarDatatoGoogle = function(fileName) {
-            console.log($scope.chart.data)
-                //cols
-            d3.csv("data/" + fileName + ".csv", function(d) {
-
-                return {
-                    c: [{
-                        v: d.Make
-                    }, {
-                        v: +d.Length
-                    }]
-                }
-            }, function(error, rows) {
-                console.log(rows);
-                $scope.chart.data.rows = rows;
-            });
-
+            renderChart(googlexChart, data);
         };
 
-        //getting highchart sample 
+        //getDataing highchart sample 
         $scope.chartConfig = highchart.chartConfig;
 
         //getting nvd3 chart sample
@@ -101,7 +66,17 @@ chartControllers.controller('chartCtrl', ['$scope',
                     return nvdLabels[d]
                 }
             };
-            
+
+        };
+
+        $scope.drawChart = function() {
+            console.log('drawChart....')
+                //getData('car');
+
+            renderChart(NVD3Chart, data);
+            // 
+            //renderChart(highxChart, data); 
+
         };
 
         //switching chart libraries
@@ -117,7 +92,6 @@ chartControllers.controller('chartCtrl', ['$scope',
 
         //loading csv file data set for chart
         loadFile = function(fileName) {
-
             d3.csv("data/" + fileName + ".csv", function(d) {
                 return {
                     year: new Date(+d.Year, 0, 1), // convert "Year" column to Date 
@@ -126,12 +100,12 @@ chartControllers.controller('chartCtrl', ['$scope',
                     length: +d.Length // convert "length" column to number
                 };
             }, function(error, rows) {
-                console.log(rows);
+                //console.log(rows);
             });
-        };        
+        };
+
         //nvd3 chartting 
         loadYAxisLabel = function(fileName) {
-
             d3.csv("data/" + fileName + ".csv", function(d) {
                 return d.Make;
             }, function(error, rows) {
@@ -139,5 +113,72 @@ chartControllers.controller('chartCtrl', ['$scope',
                 nvd3AxisLabels = rows;
             });
         };
+
+        //NVD3 Chart 
+
+        function getData(fileName) {
+            return d3.csv("data/" + fileName + ".csv")
+        };        
+
+        function getNVD3(error, rows) {
+            $scope.data[0].values = rows;
+        };
+
+        function nvd3Model(d) {
+            return {
+                label: d.Make,
+                value: +d.Length,
+                valuex: +d.No
+            }
+        };
+
+        var NVD3Chart = {
+            model: nvd3Model,
+            get: getNVD3
+        };
+
+        //google chart
+        function googleChartModel(d) {
+            return {
+                c: [{
+                    v: d.Make
+                }, {
+                    v: +d.Length
+                }]
+            }
+        };
+
+        function getGoogleChart(error, rows) {
+            $scope.chart.data.rows = rows;
+        };
+
+        var googlexChart = {
+            model: googleChartModel,
+            get: getGoogleChart
+        };
+
+        //high chart
+        function highChartModel(d) {
+            return +d.Length;
+        };      
+
+        function getHighChart(error, rows) {
+            $scope.chartConfig.series[0].data = rows;
+        };
+        var highxChart = {
+            model: highChartModel,
+            get: getHighChart
+        };
+        //var chartPipe = getData(fileName).row(nvd3Model).get(getNVD3);
+        var data = getData('car');
+
+        
+
+        function renderChart(chart, data) {
+            //console.log('drawing....')
+            data.row(chart.model).get(chart.get)
+        };
+
+
     }
 ]);

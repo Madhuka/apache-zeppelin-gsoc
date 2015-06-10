@@ -52,12 +52,12 @@ googleChart.options = {
     "height": 300,
     "displayExactValues": true,
     "vAxis": {
-"gridlines": {
+    "gridlines": {
     "count": 6
 }
     },
     "hAxis": {
-"title": "hAxis title"
+        "title": "hAxis title"
     }
 };
 

@@ -2,43 +2,27 @@ var chartControllers = angular.module('chartControllers', ['googlechart', 'nvd3'
 
 chartControllers.controller('chartCtrl', ['$scope',
     function($scope) {
-        //sample csv file name 
-        $scope.fileName = 'car';
-        $scope.chartType = 'HighChart';
+        
 
         //csv file data is load for all charts libraries
-        $scope.loadData = function() {
-            console.log('ccccssccc');
-            fileName = $scope.fileName
-            //loadFile(fileName);
-            $scope.loadCarDatatoHighChart(fileName);
-
-        };
-
-
-
-        //setting high chart labels and data seriees 
-        $scope.loadCarDatatoHighChart = function(fileName) {
-            console.log('cccc');
-            renderChart(highxChart, data);
-        };
-
-        //setting ncd3 labels and data 
-        $scope.loadCarDatatoNVD3 = function(fileName) {
+        $scope.loadData = function(fileName) {   
+            //console.log("loading data "+fileName);
+            data = getData(fileName);
             loadYAxisLabel(fileName);
-            renderChart(NVD3Chart, data);
-            $scope.options.chart.xAxis = {
-                'tickFormat': function(d) {
-                    return nvd3AxisLabels[d]
-                }
-            };
-
+            $scope.a = true;
+            drawChart();
         };
-
-        //setting google chart labels and data 
-        $scope.loadCarDatatoGoogle = function(fileName) {
-            renderChart(googlexChart, data);
+        //default one 
+        var myChart = {};
+       
+        $scope.loadChartLibrary = function(libraryIndex) {   
+            myChart = libraryName[libraryIndex];            
+            switchChartLib(myChart.library);
+            $scope.b = true;
+            drawChart();
+            
         };
+ 
 
         //getDataing highchart sample 
         $scope.chartConfig = highchart.chartConfig;
@@ -69,67 +53,59 @@ chartControllers.controller('chartCtrl', ['$scope',
 
         };
 
-        $scope.drawChart = function() {
-            console.log('drawChart....')
-                //getData('car');
-
-            renderChart(NVD3Chart, data);
-            // 
-            //renderChart(highxChart, data); 
-
-        };
-
-        //switching chart libraries
-        $scope.switchChartLib = function(chartLib) {
-            $scope.highChartChartShow = false;
-            $scope.googlrChartShow = false;
-            $scope.nvd3Show = false;
+        switchChartLib = function(chartLib) {
+            console.log('switchChartLib to '+chartLib);
+            $scope.highxChart = false;
+            $scope.googlexChart = false;
+            $scope.NVD3Chart = false;
             $scope[chartLib] = true;
         };
+        
+        drawChart = function() {   
+            console.log('draw the chart '+myChart.library);
+            if(myChart.model != null) {           
+                renderChart(myChart.model, data);
+                            //nvd3 axis update
+            $scope.options.chart.xAxis = {
+                'tickFormat': function(d) {
+                    return nvd3AxisLabels[d]
+                }
+            };
+        }
 
-        //End of the scope level
+        };
         var nvd3AxisLabels = {};
 
-        //loading csv file data set for chart
-        loadFile = function(fileName) {
-            d3.csv("data/" + fileName + ".csv", function(d) {
-                return {
-                    year: new Date(+d.Year, 0, 1), // convert "Year" column to Date 
-                    make: d.Make,
-                    model: d.Model,
-                    length: +d.Length // convert "length" column to number
-                };
-            }, function(error, rows) {
-                //console.log(rows);
-            });
-        };
-
+        
         //nvd3 chartting 
         loadYAxisLabel = function(fileName) {
-            d3.csv("data/" + fileName + ".csv", function(d) {
-                return d.Make;
-            }, function(error, rows) {
-                //console.log(rows);
-                nvd3AxisLabels = rows;
-            });
+            nvd3AxisLabels = getData(fileName).row(nvd3YaxisModel).get(getNVD3Yaxis);
         };
 
         //NVD3 Chart 
 
-        function getData(fileName) {
+        getData = function(fileName) {
             return d3.csv("data/" + fileName + ".csv")
         };        
 
-        function getNVD3(error, rows) {
+        getNVD3 = function(error, rows) {
             $scope.data[0].values = rows;
         };
 
-        function nvd3Model(d) {
+        nvd3Model = function(d) {
             return {
                 label: d.Make,
                 value: +d.Length,
                 valuex: +d.No
             }
+        };
+
+        getNVD3Yaxis = function(error, rows) {
+            nvd3AxisLabels = rows;
+        };
+
+        nvd3YaxisModel = function(d) {
+            return d.Make;
         };
 
         var NVD3Chart = {
@@ -138,7 +114,7 @@ chartControllers.controller('chartCtrl', ['$scope',
         };
 
         //google chart
-        function googleChartModel(d) {
+        googleChartModel = function(d) {
             return {
                 c: [{
                     v: d.Make
@@ -148,7 +124,7 @@ chartControllers.controller('chartCtrl', ['$scope',
             }
         };
 
-        function getGoogleChart(error, rows) {
+        getGoogleChart = function(error, rows) {
             $scope.chart.data.rows = rows;
         };
 
@@ -158,11 +134,12 @@ chartControllers.controller('chartCtrl', ['$scope',
         };
 
         //high chart
-        function highChartModel(d) {
+        highChartModel = function(d) {
             return +d.Length;
-        };      
+        };    
 
-        function getHighChart(error, rows) {
+
+        getHighChart = function(error, rows) {
             $scope.chartConfig.series[0].data = rows;
         };
         var highxChart = {
@@ -170,15 +147,16 @@ chartControllers.controller('chartCtrl', ['$scope',
             get: getHighChart
         };
         //var chartPipe = getData(fileName).row(nvd3Model).get(getNVD3);
-        var data = getData('car');
+        
 
         
 
-        function renderChart(chart, data) {
-            //console.log('drawing....')
+        renderChart = function(chart, data) {
+            console.log('drawing....')
             data.row(chart.model).get(chart.get)
         };
 
-
+        libraryName = [ { 'library': 'NVD3Chart', 'model':NVD3Chart}, { 'library':'highxChart', 'model':highxChart}, { 'library': 'googlexChart','model':googlexChart}];
+        chartTypes = ["Line","Bar"];
     }
 ]);

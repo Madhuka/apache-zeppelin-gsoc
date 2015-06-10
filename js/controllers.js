@@ -1,8 +1,11 @@
 var chartControllers = angular.module('chartControllers', ['googlechart', 'nvd3', 'highcharts-ng']);
 
-chartControllers.controller('chartCtrl', ['$scope',
-    function($scope) {
+
+chartControllers.controller('chartCtrl', ['$scope', '$location',
+    function($scope, $location) {
         
+
+
 
         //csv file data is load for all charts libraries
         $scope.loadData = function(fileName) {   
@@ -60,7 +63,7 @@ chartControllers.controller('chartCtrl', ['$scope',
             $scope.NVD3Chart = false;
             $scope[chartLib] = true;
         };
-        
+
         drawChart = function() {   
             console.log('draw the chart '+myChart.library);
             if(myChart.model != null) {           

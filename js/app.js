@@ -1,6 +1,7 @@
 var zeppelinGsocApp = angular.module('zeppelinGsocApp', [
   'ngRoute',
-  'chartControllers'
+  'chartControllers',
+  'navControllers'
 ]);
 
 zeppelinGsocApp.config(['$routeProvider',

@@ -50,11 +50,9 @@ chartControllers.controller('chartCtrl', ['$scope', '$location', 'Datax',
             $scope.setActive('b3',hchartType);
             //nvd3             
             loadYAxisLabel($scope.fileName);
-            var nvdLabels = nvd3AxisLabels;
+            var nvdLabels = nvd3AxisLabels;            
             $scope.options.chart.xAxis = {
-                'axisLabel': 'Make'
-            };
-            $scope.options.chart.xAxis = {
+                'axisLabel': 'Make',
                 'tickFormat': function(d) {
                     return nvdLabels[d]
                 }
@@ -66,21 +64,11 @@ chartControllers.controller('chartCtrl', ['$scope', '$location', 'Datax',
         $scope.active={'b1':false,'b2':false,'b3':'bar'};
 
         $scope.setActive = function(set,type) {
-            if(set=='b1')
-                $scope.active.b1 = type;
-            if(set=='b2')
-                $scope.active.b2 = type;
-            if(set=='b3')
-                $scope.active.b3 = type;
+            $scope.active[set] = type;
         };
 
         $scope.isBActive = function(set,type) {
-            if(set=='b1')
-              return type === $scope.active.b1;
-            if(set=='b2')
-                return type === $scope.active.b2;
-            if(set=='b3')
-                return type === $scope.active.b3;
+           return $scope.active[set] === type;
         };
         
         switchChartLib = function(chartLib) {

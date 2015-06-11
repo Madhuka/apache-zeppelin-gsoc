@@ -3,7 +3,16 @@ var zeppelinGsocApp = angular.module('zeppelinGsocApp', [
   'chartControllers',
   'navControllers'
 ]);
-
+zeppelinGsocApp.factory('Datax', function () {
+    return { dataSet: 'car',
+    getDataSet: function() {
+      return dataSet;
+    },
+    setDataSet: function(name) {
+      dataSet = name;
+    }
+     };
+});
 zeppelinGsocApp.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.

@@ -1,8 +1,8 @@
 var chartControllers = angular.module('chartControllers', ['googlechart', 'nvd3', 'highcharts-ng']);
 
 
-chartControllers.controller('chartCtrl', ['$scope', '$location',
-    function($scope, $location) {
+chartControllers.controller('chartCtrl', ['$scope', '$location', 'Datax',
+    function($scope, $location, Datax) {
         
 
 
@@ -11,16 +11,21 @@ chartControllers.controller('chartCtrl', ['$scope', '$location',
         $scope.loadData = function(fileName) {   
             //console.log("loading data "+fileName);
             data = getData(fileName);
+            $scope.setActive('b1',fileName);
+            //$scope.Datax = Datax;
+            console.log(Datax)
             loadYAxisLabel(fileName);
             $scope.a = true;
             drawChart();
         };
-        //default one 
+
+                //default one 
         var myChart = {};
        
         $scope.loadChartLibrary = function(libraryIndex) {   
             myChart = libraryName[libraryIndex];            
             switchChartLib(myChart.library);
+            $scope.setActive('b2',myChart.library);
             $scope.b = true;
             drawChart();
             
@@ -42,6 +47,7 @@ chartControllers.controller('chartCtrl', ['$scope', '$location',
             $scope.chart.type = gchartType;
             $scope.chartConfig.options.chart.type = hchartType;
             $scope.options.chart.type = dchartType;
+            $scope.setActive('b3',hchartType);
             //nvd3             
             loadYAxisLabel($scope.fileName);
             var nvdLabels = nvd3AxisLabels;
@@ -56,6 +62,27 @@ chartControllers.controller('chartCtrl', ['$scope', '$location',
 
         };
 
+        //deafult button picker
+        $scope.active={'b1':false,'b2':false,'b3':'bar'};
+
+        $scope.setActive = function(set,type) {
+            if(set=='b1')
+                $scope.active.b1 = type;
+            if(set=='b2')
+                $scope.active.b2 = type;
+            if(set=='b3')
+                $scope.active.b3 = type;
+        };
+
+        $scope.isBActive = function(set,type) {
+            if(set=='b1')
+              return type === $scope.active.b1;
+            if(set=='b2')
+                return type === $scope.active.b2;
+            if(set=='b3')
+                return type === $scope.active.b3;
+        };
+        
         switchChartLib = function(chartLib) {
             console.log('switchChartLib to '+chartLib);
             $scope.highxChart = false;

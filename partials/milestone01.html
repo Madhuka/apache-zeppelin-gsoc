@@ -1,15 +1,15 @@
 <div class="inner cover">
 
 
-    <h3 class="cover-heading">MileStone - 01</h3>
+    <h3 class="cover-heading" >MileStone - 01</h3>
 
 
     <!--sample data set is to pick from csv file-->
-    <div>
+    <div ng-controller="navCtrl">
         <label>1. Select the Data set: </label>
         <div class="btn-group">
-            <a class="btn btn-default" ng-click="loadData('car')"><i class="fa fa-h-square"> Car</i></a>
-            <a class="btn btn-default" ng-click="loadData('bike')"><i class="fa fa-google"> Bike</i></a>
+            <a class="btn btn-default" ng-class="{'active': isBActive('b1','car')}" ng-click="loadData('car')"><i class="fa fa-h-square"> Car</i></a>
+            <a class="btn btn-default" ng-class="{'active': isBActive('b1','bike')}" ng-click="loadData('bike')"><i class="fa fa-google"> Bike</i></a>
         </div>
     </div>
     <br>
@@ -17,9 +17,9 @@
     <div ng-show="a">
         <label>2. Select the Chart Library</label>
         <div class="btn-group">
-            <a class="btn btn-default" ng-click="loadChartLibrary(1)"><i class="fa fa-h-square"> HighChart</i></a>
-            <a class="btn btn-default" ng-click="loadChartLibrary(2)"><i class="fa fa-google"> GooglrChart</i></a>
-            <a class="btn btn-default" ng-click="loadChartLibrary(0)"><i class="fa fa-align-right"> NVD3 Chart</i></a>
+            <a class="btn btn-default" ng-class="{'active': isBActive('b2','highxChart')}" ng-click="loadChartLibrary(1)"><i class="fa fa-h-square"> HighChart</i></a>
+            <a class="btn btn-default" ng-class="{'active': isBActive('b2','googlexChart')}" ng-click="loadChartLibrary(2)"><i class="fa fa-google"> GooglrChart</i></a>
+            <a class="btn btn-default" ng-class="{'active': isBActive('b2','NVD3Chart')}" ng-click="loadChartLibrary(0)"><i class="fa fa-align-right"> NVD3 Chart</i></a>
         </div>
         <a class="btn btn-default" ng-click="drawChart()"><i class="fa fa-bar-chart"> Draw Chart</i></a>
     </div>
@@ -29,8 +29,8 @@
     <div ng-show="a && b">
         <label>3. Selct the Chart Type</label>
         <div class="btn-group">
-            <a class="btn btn-default" ng-click="switchChartType('LineChart','line','lineChart')"><i class="fa fa-line-chart"> Line Chart</i></a>
-            <a class="btn btn-default" ng-click="switchChartType('BarChart','bar','discreteBarChart')"><i class="fa fa-bar-chart"> Bar Chart</i></a>
+            <a class="btn btn-default" ng-class="{'active': isBActive('b3','line')}" ng-click="switchChartType('LineChart','line','lineChart')"><i class="fa fa-line-chart"> Line Chart</i></a>
+            <a class="btn btn-default" ng-class="{'active': isBActive('b3','bar')}" ng-click="switchChartType('BarChart','bar','discreteBarChart')"><i class="fa fa-bar-chart"> Bar Chart</i></a>
         </div>
     </div>
 

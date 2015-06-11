@@ -71,7 +71,7 @@ chartControllers.controller('chartCtrl', ['$scope', '$location', 'Datax',
            return $scope.active[set] === type;
         };
         
-        switchChartLib = function(chartLib) {
+        function switchChartLib (chartLib) {
             console.log('switchChartLib to '+chartLib);
             $scope.highxChart = false;
             $scope.googlexChart = false;
@@ -79,7 +79,7 @@ chartControllers.controller('chartCtrl', ['$scope', '$location', 'Datax',
             $scope[chartLib] = true;
         };
 
-        drawChart = function() {   
+        function drawChart() {   
             console.log('draw the chart '+myChart.library);
             if(myChart.model != null) {           
                 renderChart(myChart.model, data);
@@ -96,21 +96,21 @@ chartControllers.controller('chartCtrl', ['$scope', '$location', 'Datax',
 
         
         //nvd3 chartting 
-        loadYAxisLabel = function(fileName) {
+        function loadYAxisLabel(fileName) {
             nvd3AxisLabels = getData(fileName).row(nvd3YaxisModel).get(getNVD3Yaxis);
         };
 
         //NVD3 Chart 
 
-        getData = function(fileName) {
+        function getData(fileName) {
             return d3.csv("data/" + fileName + ".csv")
         };        
 
-        getNVD3 = function(error, rows) {
+        function getNVD3(error, rows) {
             $scope.data[0].values = rows;
         };
 
-        nvd3Model = function(d) {
+        function nvd3Model(d) {
             return {
                 label: d.Make,
                 value: +d.Length,
@@ -118,11 +118,11 @@ chartControllers.controller('chartCtrl', ['$scope', '$location', 'Datax',
             }
         };
 
-        getNVD3Yaxis = function(error, rows) {
+        function getNVD3Yaxis(error, rows) {
             nvd3AxisLabels = rows;
         };
 
-        nvd3YaxisModel = function(d) {
+        function nvd3YaxisModel(d) {
             return d.Make;
         };
 
@@ -132,7 +132,7 @@ chartControllers.controller('chartCtrl', ['$scope', '$location', 'Datax',
         };
 
         //google chart
-        googleChartModel = function(d) {
+        function googleChartModel(d) {
             return {
                 c: [{
                     v: d.Make
@@ -142,7 +142,7 @@ chartControllers.controller('chartCtrl', ['$scope', '$location', 'Datax',
             }
         };
 
-        getGoogleChart = function(error, rows) {
+        function getGoogleChart(error, rows) {
             $scope.chart.data.rows = rows;
         };
 
@@ -152,12 +152,12 @@ chartControllers.controller('chartCtrl', ['$scope', '$location', 'Datax',
         };
 
         //high chart
-        highChartModel = function(d) {
+        function highChartModel(d) {
             return +d.Length;
         };    
 
 
-        getHighChart = function(error, rows) {
+        function getHighChart(error, rows) {
             $scope.chartConfig.series[0].data = rows;
         };
         var highxChart = {
@@ -169,7 +169,7 @@ chartControllers.controller('chartCtrl', ['$scope', '$location', 'Datax',
 
         
 
-        renderChart = function(chart, data) {
+        function renderChart(chart, data) {
             console.log('drawing....')
             data.row(chart.model).get(chart.get)
         };

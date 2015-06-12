@@ -13,15 +13,11 @@
     <title>Apache Zeppelin GSOC15</title>
     <link href="css/chart.css" rel="stylesheet">
     <!-- Bootstrap core CSS -->
-    <!-- bower:js -->
-    <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- bower:ccs -->
     <!-- endbower -->
     <!-- Custom styles for this template -->
     <link href="css/cover.css" rel="stylesheet">
-    <!-- chartting CSS -->
-    <link rel="stylesheet" href="node_modules\angular-nvd3\lib\nv.d3.css" \>
-    <!-- Font-Awesome CSS-->
-    <link rel="stylesheet" href="node_modules\font-awesome\css\font-awesome.css" \>
+
 
 </head>
 
@@ -62,29 +58,31 @@
 
     <!-- Bootstrap core JavaScript -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="node_modules/jquery/dist/jquery.min.js"></script>
-    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/angular-google-chart/ng-google-chart.js"></script>
+    <script src="bower_components/d3/d3.js"></script>
+    <script src="bower_components/nvd3/build/nv.d3.js"></script>
+    <script src="bower_components/angular-nvd3/dist/angular-nvd3.min.js"></script>
+    <script src="bower_components/highcharts-release/highcharts.js"></script>
+    <script src="bower_components/highcharts-release/highcharts-more.js"></script>
+    <script src="bower_components/highcharts-release/modules/exporting.js"></script>
+    <!-- endbower -->
+    
 
     <!--angularJS JavaScript-->
-    <script src="node_modules/angular/angular.js"></script>
-    <script src="node_modules/angular-route/angular-route.js"></script>
     <script src="js/app.js"></script>
     <script src="js/controllers.js"></script>
     <!-- Top Menu nav interaction -->
     <script src="js/nav-controller.js"></script>
     
-    <!--chartting libraries -->
-    <!-- it's important for nvd3.js -->
-    <script src="node_modules\d3\d3.js"></script>
-    <script src="node_modules\angular-nvd3\lib\nv.d3.js"></script>
-    <script src="node_modules\angular-nvd3\dist\angular-nvd3.js"></script>
+    
 
     <!--script src="http://code.highcharts.com/highcharts.src.js"></script-->
     <script src="js/highchart/highcharts.src.js"></script>
-    <script src="node_modules\highcharts-ng-temp\dist\highcharts-ng.js"></script>
-
-    <script src="node_modules\angular-google-chart\ng-google-chart.js"></script>
-
     <script src="js\sample-charts.js"></script>
 
 </body>

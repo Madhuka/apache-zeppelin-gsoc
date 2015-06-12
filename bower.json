@@ -9,7 +9,7 @@
     "angular-google-chart": "~0.0.11",
     "d3": "~3.5.5",
     "angular-nvd3": "~1.0.0-beta",
-    "highcharts-ng-temp": "~0.0.9-dev",
+    "highcharts-release": "~4.1.5",
     "font-awesome": "~4.3.0"
   },
   "devDependencies": {
@@ -20,13 +20,6 @@
   "authors": [
     "madhuka <madhukaudantha@gmail.com>"
   ],
-  "main": "index.html",
-  "license": "MIT",
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "test",
-    "tests"
-  ]
+  "license": "MIT"
+
 }

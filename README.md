@@ -14,6 +14,8 @@ npm start
 ### Version
 
 0.0.1
+milestone-01
+milestone-02
 
 ### Author
 [Madhuka](http://madhukaudantha.blogspot.com/)

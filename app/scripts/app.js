@@ -17,14 +17,14 @@ zeppelinGsocApp.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.
       when('/contact', {
-        templateUrl: 'partials/contact.html'
+        templateUrl: 'view/contact.html'
       }).
       when('/milestone01', {
-        templateUrl: 'partials/milestone01.html',
+        templateUrl: 'view/milestone01.html',
         controller: 'chartCtrl'
       }).
       when('/home', {
-        templateUrl: 'partials/about.html'
+        templateUrl: 'view/about.html'
       }).
       otherwise({
         redirectTo: '/home'

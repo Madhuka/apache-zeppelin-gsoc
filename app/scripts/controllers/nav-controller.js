@@ -11,15 +11,15 @@
  */
 
 angular.module('apacheZeppelinGsocApp').controller('NavCtrl', function($scope, $rootScope, $location) {
-  	
-  /*vm stands for ViewModel*/	
+
+  /*vm stands for ViewModel*/
   var vm = this;
 
   function isActive(viewLocation) {
-   return viewLocation === $location.path();
-  }  
+    return viewLocation === $location.path();
+  }
 
   vm.isActive = isActive;
 
-  
+
 });

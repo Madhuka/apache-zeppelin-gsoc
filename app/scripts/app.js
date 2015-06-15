@@ -5,6 +5,7 @@
  * @name apacheZeppelinGsocApp
  * @description
  * # apacheZeppelinGsocApp
+ * @author madhuka udantha
  *
  * Main module of the application.
  */
@@ -33,6 +34,9 @@ angular
       })
 	    .when('/contact', {
         templateUrl: 'views/contact.html'
+      })
+      .when('/', {
+        templateUrl: 'views/about.html'
       })
       .otherwise({
         redirectTo: '/'

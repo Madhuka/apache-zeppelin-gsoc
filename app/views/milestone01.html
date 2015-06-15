@@ -5,11 +5,11 @@
 
 
     <!--sample data set is to pick from csv file-->
-    <div ng-controller="navCtrl">
+    <div ng-controller="ChartCtrl as chartctrl">
         <label>1. Select the Data set: </label>
         <div class="btn-group">
-            <a class="btn btn-default" ng-class="{'active': isBActive('b1','car')}" ng-click="loadData('car')"><i class="fa fa-h-square"> Car</i></a>
-            <a class="btn btn-default" ng-class="{'active': isBActive('b1','bike')}" ng-click="loadData('bike')"><i class="fa fa-google"> Bike</i></a>
+            <a class="btn btn-default" ng-class="{'active': chartctrl.isButtonActive('dataButton','car')}" ng-click="chartctrl.loadData('car')"><i class="fa fa-h-square"> Car</i></a>
+            <a class="btn btn-default" ng-class="{'active': chartctrl.isButtonActive('dataButton','bike')}" ng-click="chartctrl.loadData('bike')"><i class="fa fa-google"> Bike</i></a>
         </div>
     </div>
     <br>

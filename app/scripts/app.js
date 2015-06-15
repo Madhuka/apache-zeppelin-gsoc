@@ -10,19 +10,29 @@
  */
 angular
   .module('apacheZeppelinGsocApp', [
-    'ngCookies',
     'ngResource',
-    'ngRoute'
+    'ngRoute',
+	  'googlechart'
   ])
   .config(function ($routeProvider) {
     $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
+      .when('/home', {
+        templateUrl: 'views/about.html'
+      })
+      .when('/chart', {
+        templateUrl: 'views/chart.html',
+        controller: 'ChartCtrl'
+      })
+      .when('/milestone01', {
+        templateUrl: 'views/milestone01.html',
+        controller: 'ChartCtrl'
       })
       .when('/about', {
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl'
+      })
+	    .when('/contact', {
+        templateUrl: 'views/contact.html'
       })
       .otherwise({
         redirectTo: '/'

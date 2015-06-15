@@ -3,7 +3,7 @@
 describe('Controller: AboutCtrl', function () {
 
   // load the controller's module
-  beforeEach(module('apacheZeppelinGsocApp'));
+  beforeEach(module('gotestApp'));
 
   var AboutCtrl,
     scope;

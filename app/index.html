@@ -2,9 +2,15 @@
 <html class="no-js">
   <head>
     <meta charset="utf-8">
-    <title></title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Madhuka Udantha">
+    <meta http-equiv="Access-Control-Allow-Origin" content="*"/>
+
+    <link rel="icon" href="favicon.ico" />
+
+    <title>Apache Zeppelin GSOC15</title>
+
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
@@ -12,82 +18,64 @@
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
-    <link rel="stylesheet" href="styles/main.css">
+    <!--link rel="stylesheet" href="styles/main.css"-->
+	<link href="styles/chart.css" rel="stylesheet">
+	<link href="styles/cover.css" rel="stylesheet">
     <!-- endbuild -->
   </head>
   <body ng-app="apacheZeppelinGsocApp">
-    <!--[if lt IE 7]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
+        <div class="site-wrapper">
 
-    <!-- Add your site or application content here -->
-    <div class="header">
-      <div class="navbar navbar-default" role="navigation">
-        <div class="container">
-          <div class="navbar-header">
+        <div class="site-wrapper-inner">
 
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
+            <div class="cover-container">
 
-            <a class="navbar-brand" href="#/">apacheZeppelinGsoc</a>
-          </div>
+                <div class="masthead clearfix">
+                    <div class="inner" ng-controller="NavCtrl as navbar">
+                        <!--h3 class="masthead-brand">Apache Zeppelin - GSoC 2015</h3-->
+                        <nav>
+                            <ul class="nav masthead-nav">
+                                <li ng-class="{ active: navbar.isActive('/')}"><a href="#/home">Home</a></li>
+                                <li ng-class="{ active: navbar.isActive('#/milestone01')}"><a href="#/milestone01">Milestone-01</a></li>
+                                <li ng-class="{ active: navbar.isActive('#/contact')}"><a href="#/contact">Contact</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
 
-          <div class="collapse navbar-collapse" id="js-navbar-collapse">
+                <div ng-view></div>
 
-            <ul class="nav navbar-nav">
-              <li class="active"><a href="#/">Home</a></li>
-              <li><a ng-href="#/about">About</a></li>
-              <li><a ng-href="#/">Contact</a></li>
-            </ul>
-          </div>
+                <div class="mastfoot">
+                    <div class="inner">
+                        <p>Source code in <a href="https://github.com/Madhuka/apache-zeppelin-gsoc">github</a>, by <a href="twitter.com/madhukaudantha">udantha</a>.</p>
+                    </div>
+                </div>
+
+            </div>
+
         </div>
-      </div>
+
     </div>
-
-    <div class="container">
-    <div ng-view=""></div>
-    </div>
-
-    <div class="footer">
-      <div class="container">
-        <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
-      </div>
-    </div>
-
-
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
-     <script>
-       !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
-       (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
-       r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
-       }(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-       ga('create', 'UA-XXXXX-X');
-       ga('send', 'pageview');
-    </script>
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
     <script src="bower_components/angular-resource/angular-resource.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="bower_components/angular-google-chart/ng-google-chart.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
-		<script src="scripts/controllers/controllers.js"></script>
-        <script src="scripts/controllers/nav-controller.js"></script>
-        <script src="scripts/controllers/sample-charts.js"></script>
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/about.js"></script>
+		<script src="scripts/controllers/chart.js"></script>
+        <script src="scripts/controllers/nav-controller.js"></script>
+        <script src="scripts/controllers/chart-controllers.js"></script>
         <!-- endbuild -->
 </body>
 </html>

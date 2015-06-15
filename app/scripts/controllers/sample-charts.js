@@ -1,45 +1,50 @@
-/*
- *This contains the sample chats for google charts, nvd3 and high charts
- *
+'use strict';
+
+/**
+ * @ngdoc function
+ * @name apacheZeppelinGsocApp.controller:sample chart
+ * @description
+ * This contains the sample chats for google charts, nvd3 and high charts
+ * Just for new comers to get chart models in apacheZeppelinGsocApp
  */
 
 //google chart
 var googleChart = {};
-googleChart.type = "BarChart";
-googleChart.cssStyle = "height:400px; width:600px;";
+googleChart.type = 'BarChart';
+googleChart.cssStyle = 'height:400px; width:600px;';
 googleChart.data = {
-    "cols": [{
-    id: "pizza",
-    label: "Pizza",
-    type: "string"
+    'cols': [{
+    id: 'pizza',
+    label: 'Pizza',
+    type: 'string'
 }, {
-    id: "populartiy",
-    label: "Populartiy",
-    type: "number"
+    id: 'populartiy',
+    label: 'Populartiy',
+    type: 'number'
 }
 
     ],
-    "rows": [{
+    'rows': [{
 c: [{
-    v: "Pepperoni"
+    v: 'Pepperoni'
 }, {
     v: 14
 }]
     }, {
 c: [{
-    v: "Mushroom"
+    v: 'Mushroom'
 }, {
     v: 6
 }]
     }, {
 c: [{
-    v: "Hawaiian"
+    v: 'Hawaiian'
 }, {
     v: 5
 }]
     }, {
 c: [{
-    v: "Sausage"
+    v: 'Sausage'
 }, {
     v: 10
 }]
@@ -47,17 +52,17 @@ c: [{
 };
 
 googleChart.options = {
-    "isStacked": "true",
-    "fill": 20,
-    "height": 300,
-    "displayExactValues": true,
-    "vAxis": {
-    "gridlines": {
-    "count": 6
+    'isStacked': 'true',
+    'fill': 20,
+    'height': 300,
+    'displayExactValues': true,
+    'vAxis': {
+    'gridlines': {
+    'count': 6
 }
     },
-    "hAxis": {
-        "title": "hAxis title"
+    'hAxis': {
+        'title': 'hAxis title'
     }
 };
 
@@ -67,7 +72,7 @@ googleChart.formatters = {};
 var ncd3Chart1 = {};
 ncd3Chart1.options = {
     chart: {
-type: "discreteBarChart",
+type: 'discreteBarChart',
 height: 300,
 width: 400,
 margin: {
@@ -85,10 +90,10 @@ y: function(d) {
 showValues: true,
 transitionDuration: 500,
 xAxis: {
-    axisLabel: "X Axis"
+    axisLabel: 'X Axis'
 },
 yAxis: {
-    axisLabel: "Y Axis",
+    axisLabel: 'Y Axis',
     axisLabelDistance: 10
 }
     }
@@ -96,21 +101,21 @@ yAxis: {
 ncd3Chart1.data = [{
 
     values: [{
-"label": "A",
-"value": 5,
-"valuex": 0
+'label': 'A',
+'value': 5,
+'valuex': 0
     }, {
-"label": "B",
-"value": 10,
-"valuex": 1
+'label': 'B',
+'value': 10,
+'valuex': 1
     }, {
-"label": "C",
-"value": 24,
-"valuex": 2
+'label': 'C',
+'value': 24,
+'valuex': 2
     }, {
-"label": "D",
-"value": 8,
-"valuex": 3
+'label': 'D',
+'value': 8,
+'valuex': 3
     }]
 }];
 
@@ -119,14 +124,14 @@ var highchart = {};
 highchart.chartConfig = {
     options: {
         title: {
-    text: ""
+    text: ''
 },
 chart: {
-    type: "bar"
+    type: 'bar'
 }
     },
     xAxis: {
-categories: ["A", "B", "C", "D"]
+categories: ['A', 'B', 'C', 'D']
     },
     series: [{
 data: [10, 15, 12, 8]
@@ -136,4 +141,4 @@ width: 500,
 height: 300
     },
     loading: false
-}
+};

@@ -1,22 +1,12 @@
-# Apache Zeppelin 
-Zeppelin is a collaborative data analytic and visualization tool for distributed, general-purpose data processing systems such as Apache Spark and Apache Flink. It has two main features, the data analytic phase and the data visualization phase. This project is an improvement or a re-design of the Data Visualization Component. It successfully eliminates all the limitations and drawbacks of the existing charting visualization component.
+# gotest
 
-###How to start the samples
+This project is generated with [yo angular generator](https://github.com/yeoman/generator-angular)
+version 0.11.1.
 
-```sh
-npm start
-```
+## Build & development
 
+Run `grunt` for building and `grunt serve` for preview.
 
-###Running the samples
-[localhost:8082](http://localhost:8082/)
+## Testing
 
-### Version
-
-0.0.1
-milestone-01
-milestone-02
-
-### Author
-[Madhuka](http://madhukaudantha.blogspot.com/)
-[Blog](http://madhukaudantha.blogspot.com)
+Running `grunt test` will run the unit tests with karma.

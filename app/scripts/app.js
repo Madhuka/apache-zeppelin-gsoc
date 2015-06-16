@@ -13,7 +13,9 @@ angular
   .module('apacheZeppelinGsocApp', [
     'ngResource',
     'ngRoute',
-	  'googlechart'
+	  'googlechart',
+    'highcharts-ng',
+    'nvd3'
   ])
   .config(function ($routeProvider) {
     $routeProvider

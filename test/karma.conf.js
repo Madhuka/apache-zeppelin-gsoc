@@ -30,10 +30,12 @@ module.exports = function(config) {
       'bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
       'bower_components/angular-google-chart/ng-google-chart.js',
       'bower_components/d3/d3.js',
-      'bower_components/nvd3/build/nv.d3.js',
+      'bower_components/nvd3/nv.d3.js',
       'bower_components/highcharts-release/highcharts.js',
       'bower_components/highcharts-release/highcharts-more.js',
       'bower_components/highcharts-release/modules/exporting.js',
+      'bower_components/highcharts-ng/dist/highcharts-ng.js',
+      'bower_components/angular-nvd3/dist/angular-nvd3.min.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       "app/scripts/**/*.js",

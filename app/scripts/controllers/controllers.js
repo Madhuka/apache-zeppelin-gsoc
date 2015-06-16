@@ -11,6 +11,7 @@ chartControllers.controller('chartCtrl', ['$scope', '$location', 'Datax',
         $scope.loadData = function(fileName) {   
             //console.log("loading data "+fileName);
             data = getData(fileName);
+            console.log(data);
             $scope.setActive('b1',fileName);
             //$scope.Datax = Datax;
             console.log(Datax)

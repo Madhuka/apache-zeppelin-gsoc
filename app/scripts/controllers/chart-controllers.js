@@ -11,7 +11,7 @@
  * @author madhuka udantha
  */
 
-angular.module('apacheZeppelinGsocApp').controller('ChartCtrl', function($scope, chartFactory, googleChartFactory ) {
+angular.module('apacheZeppelinGsocApp').controller('ChartCtrl', function($scope, chartFactory, googleChartFactory) {
 
   var vm = this;
   // var libraryName = [ { 'library': 'NVD3Chart', 'model':NVD3Chart}, { 'library':'highxChart', 'model':highxChart}, { 'library': 'googlexChart','model':googlexChart}];
@@ -19,7 +19,7 @@ angular.module('apacheZeppelinGsocApp').controller('ChartCtrl', function($scope,
   //myChart.setChartLib('googleChart',{});
   var myChart = googleChartFactory;
   console.log(myChart);
-   var libraryName = [{
+  var libraryName = [{
     'library': 'NVD3Chart'
   }, {
     'library': 'highxChart'
@@ -28,12 +28,31 @@ angular.module('apacheZeppelinGsocApp').controller('ChartCtrl', function($scope,
   }];
 
   var chartTypes = ['Line', 'Bar'];
-  
+
+  function drawChart() {
+    console.log('draw the chart ' + myChart.library);
+    //getting nvd3 chart sample
+    console.log(ncd3Chart1.options);
+
+    if (myChart.model !== null) {
+      renderChart(myChart.model, data);
+      //nvd3 axis update
+    }
+  }
+
+  function renderChart(chart, data) {
+    console.log('drawing....');
+    data.row(chart.model).get(chart.get);
+  }
+  var data = {};
 
   function loadData(fileName) {
     console.log('loading data ' + fileName);
     setButtonActive('dataButton', fileName);
+    data = getData(fileName);
 
+    console.log(data);
+    drawChart();
   }
 
   function loadChartLibrary(libraryIndex) {
@@ -89,7 +108,7 @@ angular.module('apacheZeppelinGsocApp').controller('ChartCtrl', function($scope,
     get: getNVD3
   };
 
-  
+
   //deafult button picker
   var active = {
     'dataButton': false,
@@ -114,5 +133,11 @@ angular.module('apacheZeppelinGsocApp').controller('ChartCtrl', function($scope,
   vm.isButtonSelected = isButtonSelected;
   vm.loadChartLibrary = loadChartLibrary;
   vm.loadChartType = loadChartType;
+  /*To-DO (Testing) chart lib testing for lib */
+  vm.options = ncd3Chart1.options;
+  vm.data = ncd3Chart1.data;
+  vm.chartConfig = highchart.chartConfig;
+  vm.chart = googleChart;
+  /*END*/
 
 });

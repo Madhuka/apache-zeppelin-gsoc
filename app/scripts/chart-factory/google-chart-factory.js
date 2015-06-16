@@ -25,7 +25,7 @@ angular.module('apacheZeppelinGsocApp').factory('googleChartFactory', function(c
   }
 
   function getGoogleChart(error, rows) {
-    $scope.chart.data.rows = rows;
+   //$scope.chart.data.rows = rows;
   }
 
   var googlexChart = {
@@ -39,6 +39,6 @@ angular.module('apacheZeppelinGsocApp').factory('googleChartFactory', function(c
   function setChartAxis() {
   }
 
-  return googleChartFactory
+  return googleChartFactory;
   
 });

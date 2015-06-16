@@ -2,7 +2,7 @@
 
 
     <h3 class="cover-heading" >MileStone - 01</h3>
-
+    <div>
 
     <!--sample data set is to pick from csv file-->
     <div>
@@ -34,16 +34,16 @@
     </div>
 
     <!--charts-->
-    <div class="box" ng-show="highxChart">
-        <highchart id="chart1" config="chartConfig"></highchart>
+    <div class="box">..
+        <highchart id="chart1" config="chartctrl.chartConfig"></highchart>
     </div>
 
-    <div class="box" ng-show="googlexChart">
-        <div google-chart chart="chart" style="{{chart.cssStyle}}" />
+    <div class="box">..
+        <div google-chart chart="chartctrl.chart" style="{{chart.cssStyle}}" />
     </div>
 
-    <div class="box" ng-show="NVD3Chart">
-        <nvd3 options='options' data='data'></nvd3>
+    <div class="box">..
+        <nvd3 options='chartctrl.options' data='chartctrl.data'></nvd3>
     </div>
 
 </div>

@@ -1,7 +1,6 @@
-<!DOCTYPE html>
-<html lang="en" ng-app="zeppelinGsocApp">
-
-<head>
+<!doctype html>
+<html class="no-js">
+  <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,37 +10,34 @@
     <link rel="icon" href="favicon.ico" />
 
     <title>Apache Zeppelin GSOC15</title>
-    <link href="styles/chart.css" rel="stylesheet">
-    <!-- Bootstrap core CSS -->
-    <!-- bower:ccs -->
-    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css"/>
-    <!-- chartting CSS -->
-    <link rel="stylesheet" href="../bower_components/angular-nvd3/lib/nv.d3.css" \>
-    <!-- Font-Awesome CSS-->
-    <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.css" \>
+
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
     <!-- endbower -->
-    <!-- Custom styles for this template -->
-    <link href="styles/cover.css" rel="stylesheet">
-
-
-</head>
-
-<body>
-
-    <div class="site-wrapper">
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <!--link rel="stylesheet" href="styles/main.css"-->
+	<link href="styles/chart.css" rel="stylesheet">
+	<link href="styles/cover.css" rel="stylesheet">
+    <!-- endbuild -->
+  </head>
+  <body ng-app="apacheZeppelinGsocApp">
+        <div class="site-wrapper">
 
         <div class="site-wrapper-inner">
 
             <div class="cover-container">
 
                 <div class="masthead clearfix">
-                    <div class="inner" ng-controller="navCtrl">
-                        <!--h3 class="masthead-brand">Apache Zeppelin - GSoC 2015</h3-->
+                    <div class="inner" ng-controller="NavCtrl as navbar">
+                        <h3 class="masthead-brand">Apache Zeppelin - GSoC 2015</h3>
                         <nav>
                             <ul class="nav masthead-nav">
-                                <li ng-class="{ active: isActive('/')}"><a href="#/home">Home</a></li>
-                                <li ng-class="{ active: isActive('#/milestone01')}"><a href="#/milestone01">Milestone-01</a></li>
-                                <li ng-class="{ active: isActive('#/contact')}"><a href="#/contact">Contact</a></li>
+                                <li ng-class="{ active: navbar.isActive('/')}"><a href="#/home">Home</a></li>
+                                <li ng-class="{ active: navbar.isActive('#/milestone01')}"><a href="#/milestone01">Milestone-01</a></li>
+                                <li ng-class="{ active: navbar.isActive('#/contact')}"><a href="#/contact">Contact</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -61,36 +57,27 @@
 
     </div>
 
-    <!-- Bootstrap core JavaScript -->
-    <!-- Placed at the end of the document so the pages load faster -->
+    <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
-    <script src="../bower_components/jquery/dist/jquery.js"></script>
-    <script src="../bower_components/angular/angular.js"></script>
-    <script src="../bower_components/angular-route/angular-route.js"></script>
-    <script src="../bower_components/bootstrap/dist/js/bootstrap.js"></script>
-    <script src="../bower_components/angular-google-chart/ng-google-chart.js"></script>
-    <script src="../bower_components/d3/d3.js"></script>
-    <script src="../bower_components/nvd3/build/nv.d3.js"></script>
-    <script src="../bower_components/angular-nvd3/dist/angular-nvd3.min.js"></script>
-    <script src="../bower_components/highcharts-release/highcharts.js"></script>
-    <script src="../bower_components/highcharts-release/highcharts-more.js"></script>
-    <script src="../bower_components/highcharts-ng/dist/highcharts-ng.js"></script>
-    <script src="../bower_components/highcharts-release/modules/exporting.js"></script>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="bower_components/angular-google-chart/ng-google-chart.js"></script>
     <!-- endbower -->
-    
+    <!-- endbuild -->
 
-    <!--angularJS JavaScript-->
-    <script src="scripts/app.js"></script>
-    <script src="scripts/controllers/controllers.js"></script>
-    <!-- Top Menu nav interaction -->
-    <script src="scripts/controllers/nav-controller.js"></script>
-    
-    
-
-    <!--script src="http://code.highcharts.com/highcharts.src.js"></script-->
-
-    <script src="scripts/controllers/sample-charts.js"></script>
-
+        <!-- build:js({.tmp,app}) scripts/scripts.js -->
+        <script src="scripts/app.js"></script>
+        <script src="scripts/controllers/main.js"></script>
+        <script src="scripts/controllers/about.js"></script>
+		<script src="scripts/controllers/chart.js"></script>
+        <script src="scripts/controllers/nav-controller.js"></script>
+        <script src="scripts/controllers/chart-controllers.js"></script>
+        <script src="scripts/chart-factory/chart-factory.js"></script>
+        <script src="scripts/chart-factory/google-chart-factory.js"></script>
+        <!-- endbuild -->
 </body>
-
 </html>

@@ -1,32 +1,44 @@
-var zeppelinGsocApp = angular.module('zeppelinGsocApp', [
-  'ngRoute',
-  'chartControllers',
-  'navControllers'
-]);
-zeppelinGsocApp.factory('Datax', function () {
-    return { dataSet: 'car',
-    getDataSet: function() {
-      return dataSet;
-    },
-    setDataSet: function(name) {
-      dataSet = name;
-    }
-     };
-});
-zeppelinGsocApp.config(['$routeProvider',
-  function($routeProvider) {
-    $routeProvider.
-      when('/contact', {
-        templateUrl: 'view/contact.html'
-      }).
-      when('/milestone01', {
-        templateUrl: 'view/milestone01.html',
-        controller: 'chartCtrl'
-      }).
-      when('/home', {
-        templateUrl: 'view/about.html'
-      }).
-      otherwise({
-        redirectTo: '/home'
+'use strict';
+
+/**
+ * @ngdoc overview
+ * @name apacheZeppelinGsocApp
+ * @description
+ * # apacheZeppelinGsocApp
+ * @author madhuka udantha
+ *
+ * Main module of the application.
+ */
+angular
+  .module('apacheZeppelinGsocApp', [
+    'ngResource',
+    'ngRoute',
+	  'googlechart'
+  ])
+  .config(function ($routeProvider) {
+    $routeProvider
+      .when('/home', {
+        templateUrl: 'views/about.html'
+      })
+      .when('/chart', {
+        templateUrl: 'views/chart.html',
+        controller: 'ChartCtrl'
+      })
+      .when('/milestone01', {
+        templateUrl: 'views/milestone01.html',
+        controller: 'ChartCtrl'
+      })
+      .when('/about', {
+        templateUrl: 'views/about.html',
+        controller: 'AboutCtrl'
+      })
+	    .when('/contact', {
+        templateUrl: 'views/contact.html'
+      })
+      .when('/', {
+        templateUrl: 'views/about.html'
+      })
+      .otherwise({
+        redirectTo: '/'
       });
-  }]);
+  });

@@ -1,11 +1,25 @@
-var navControllers = angular.module('navControllers', []);
+'use strict';
 
-navControllers.controller('navCtrl', ['$scope', '$location',
-  function($scope, $location) {
+/**
+ * @ngdoc function
+ * @name apacheZeppelinGsocApp.controller:navCtrl
+ * @description
+ * # navCtrl
+ * Controller of the top navigation, mainly use for the dropdown menu
+ *
+ * @author madhuka udantha
+ */
 
-    $scope.isActive = function(viewLocation) {
-      return viewLocation === $location.path();
-    };
+angular.module('apacheZeppelinGsocApp').controller('NavCtrl', function($scope, $rootScope, $location) {
 
+  /*vm stands for ViewModel*/
+  var vm = this;
+
+  function isActive(viewLocation) {
+    return viewLocation === $location.path();
   }
-]);
+
+  vm.isActive = isActive;
+
+
+});

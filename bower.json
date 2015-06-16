@@ -1,25 +1,17 @@
 {
-  "name": "apache-zeppelin-gsoc",
-  "version": "0.0.1",
+  "name": "apacheZeppelinGsoc",
+  "version": "0.0.0",
   "dependencies": {
-    "angular": "1.3.8",
-    "angular-route": "1.3.8",
-    "jquery": "~2.1.4",
-    "bootstrap": "~3.3.0",
-    "angular-google-chart": "~0.0.11",
-    "d3": "~3.5.5",
-    "angular-nvd3": "~1.0.0-beta",
-    "highcharts-ng": "~0.0.8",
-    "font-awesome": "~4.3.0"
+    "angular": "^1.3.0",
+    "bootstrap": "^3.2.0",
+    "angular-resource": "^1.3.0",
+    "angular-route": "^1.3.0",
+    "angular-bootstrap": "~0.13.0",
+    "angular-google-chart": "~0.0.11"
   },
   "devDependencies": {
-    "angular-mocks": "1.3.8",
-    "angular-scenario": "1.3.8"
+    "angular-mocks": "^1.3.0"
   },
-  "homepage": "https://github.com/Madhuka/apache-zeppelin-gsoc",
-  "authors": [
-    "madhuka <madhukaudantha@gmail.com>"
-  ],
-  "license": "MIT"
-
+  "appPath": "app",
+  "moduleName": "apacheZeppelinGsocApp"
 }

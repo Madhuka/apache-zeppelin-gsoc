@@ -11,11 +11,15 @@
  * @author madhuka udantha
  */
 
-angular.module('apacheZeppelinGsocApp').controller('ChartCtrl', function($scope) {
+angular.module('apacheZeppelinGsocApp').controller('ChartCtrl', function($scope, chartFactory, googleChartFactory ) {
 
   var vm = this;
   // var libraryName = [ { 'library': 'NVD3Chart', 'model':NVD3Chart}, { 'library':'highxChart', 'model':highxChart}, { 'library': 'googlexChart','model':googlexChart}];
-  var libraryName = [{
+  //var myChart = chartFactory;
+  //myChart.setChartLib('googleChart',{});
+  var myChart = googleChartFactory;
+  console.log(myChart);
+   var libraryName = [{
     'library': 'NVD3Chart'
   }, {
     'library': 'highxChart'
@@ -24,10 +28,7 @@ angular.module('apacheZeppelinGsocApp').controller('ChartCtrl', function($scope)
   }];
 
   var chartTypes = ['Line', 'Bar'];
-  var myChart = {
-    lib: {},
-    type: {}
-  };
+  
 
   function loadData(fileName) {
     console.log('loading data ' + fileName);
@@ -88,25 +89,7 @@ angular.module('apacheZeppelinGsocApp').controller('ChartCtrl', function($scope)
     get: getNVD3
   };
 
-  //google chart
-  function googleChartModel(d) {
-    return {
-      c: [{
-        v: d.Make
-      }, {
-        v: +d.Length
-      }]
-    };
-  }
-
-  function getGoogleChart(error, rows) {
-    //$scope.chart.data.rows = rows;
-  }
-
-  var googlexChart = {
-    model: googleChartModel,
-    get: getGoogleChart
-  };
+  
   //deafult button picker
   var active = {
     'dataButton': false,

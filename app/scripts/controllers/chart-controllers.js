@@ -10,7 +10,7 @@
  * @author madhuka udantha
  */
 
-angular.module('apacheZeppelinGsocApp').controller('ChartCtrl', function($scope, ChartFactory, GoogleChartFactory, HighChartFactory, NVD3ChartFactory) {
+angular.module('apacheZeppelinGsocApp').controller('ChartCtrl', function($scope, ChartFactory, GoogleChartFactory, HighChartFactory, NVD3ChartFactory, ChartService) {
 
   var vm = this;
   var myChart = {};
@@ -28,6 +28,7 @@ angular.module('apacheZeppelinGsocApp').controller('ChartCtrl', function($scope,
   function drawChart(data) {
     console.log('draw the chart ' + myChart.lib);
     console.log(myChart);
+
     if (myChart.model !== null) {
       renderChart(myChart.model, data);
       //nvd3 axis update
@@ -36,40 +37,47 @@ angular.module('apacheZeppelinGsocApp').controller('ChartCtrl', function($scope,
 
   function renderChart(chart, datax) {
     console.log('drawing....');
-    console.log(datax);
     datax.row(chart.model).get(chart.get);
   }
   var data = {};
 
   function loadData(fileName) {
     console.log('loading data ' + fileName);
+
     setButtonActive('dataButton', fileName);
     data = getData(fileName);
+    console.log(ChartService.getHighChart().type);
+    //drawChart(data);
+    //vm.chartConfig  = ChartService.getHChart();
+    //vm.chartConfig  = ChartService.getHighChart().type;
 
   }
 
   function loadChartLibrary(libraryIndex) {
+    var myNewChart = {};
     //loading chart library model
     //myChart.lib = libraryName[libraryIndex];
     console.log('libraryName[libraryIndex]--->');
     console.log(libraryName[libraryIndex]);
     setButtonActive('chartLibraryButton', libraryName[libraryIndex].library);
-    switch(libraryIndex) {
-    case 0:
+    switch (libraryIndex) {
+      case 0:
         myChart = NVD3ChartFactory;
-        //vm.options = ncd3Chart1.options;
         vm.data[0].values = NVD3ChartFactory.data;
         break;
-    case 1:
-        myChart = HighChartFactory;
-        vm.chartConfig.series[0].data = HighChartFactory.data;        
+      case 1:
+        //chart is genrated from servie, service is using HighChartfactory.HighCHart Factory is extended version of ChartFactory.         
+        myNewChart = ChartService.getHighChart();
+        vm.chartConfig = myNewChart.viewModel;
+        //to work old pattern (Using Factory)
+        myChart = myNewChart;
         break;
-    case 2:
+      case 2:
         myChart = GoogleChartFactory;
         vm.chart.data.rows = GoogleChartFactory.data;
         break;
-}
-    
+    }
+
     drawChart(data);
   }
 

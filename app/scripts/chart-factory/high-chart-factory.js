@@ -12,6 +12,25 @@ angular.module('apacheZeppelinGsocApp').factory('HighChartFactory', function(Cha
 
 
 
+  //highChart model
+  var HighChartChartModel = {
+    options: {
+      chart: {
+        type: 'bar'
+      }
+    },
+    xAxis: {
+      categories: []
+    },
+    series: [{
+      data: []
+    }],
+    size: {
+      width: 500,
+      height: 300
+    },
+    loading: false
+  };
 
   //high chart
   function highChartModel(d) {
@@ -20,7 +39,7 @@ angular.module('apacheZeppelinGsocApp').factory('HighChartFactory', function(Cha
 
 
   function getHighChart(error, rows) {
-    HighChartFactory.data = rows;
+    HighChartChartModel.series[0].data = rows;
   }
 
   var highxChart = {
@@ -30,7 +49,7 @@ angular.module('apacheZeppelinGsocApp').factory('HighChartFactory', function(Cha
 
   //highchart chart
   var HighChartFactory = new ChartFactory('highxChart', highxChart);
-
+  HighChartFactory.viewModel = HighChartChartModel;
 
   // define a new internal private method for this chart object
   function setChartAxis() {}

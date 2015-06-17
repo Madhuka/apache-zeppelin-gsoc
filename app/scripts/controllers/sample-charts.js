@@ -122,10 +122,7 @@ ncd3Chart1.data = [{
 //highchart 
 var highchart = {};
 highchart.chartConfig = {
-    options: {
-        title: {
-    text: ''
-},
+    options: {        
 chart: {
     type: 'bar'
 }

@@ -15,12 +15,13 @@ angular.module('apacheZeppelinGsocApp').factory('ChartFactory', function() {
   var ChartFactory = function(chartLibName, chartModel) {
     this.libname = chartLibName;
     this.model = chartModel;
+    this.viewModel = {};
     this.type = {};
     this.data = {};
   };
 
   ChartFactory.setChartType = function(chartType) {
-    this.type = chartType;
+    ChartFactory.type = chartType;
   };
 
 

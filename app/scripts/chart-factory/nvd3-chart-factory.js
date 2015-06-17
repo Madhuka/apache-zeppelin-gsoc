@@ -8,11 +8,11 @@
  *
  */
 
-angular.module('apacheZeppelinGsocApp').factory('nvd3ChartFactory', function(ChartFactory) {
+angular.module('apacheZeppelinGsocApp').factory('NVD3ChartFactory', function(ChartFactory) {
 
 
   function getNVD3(error, rows) {
-    nvd3ChartFactory.data = rows;
+    NVD3ChartFactory.data = rows;
   }
 
   function nvd3Model(d) {
@@ -29,12 +29,12 @@ angular.module('apacheZeppelinGsocApp').factory('nvd3ChartFactory', function(Cha
   };
 
   //nvd3 chart
-  var nvd3ChartFactory = new ChartFactory('NVD3Chart', NVD3Chart);
+  var NVD3ChartFactory = new ChartFactory('NVD3Chart', NVD3Chart);
 
 
   // define a new internal private method for this chart object
   function setChartAxis() {}
 
-  return nvd3ChartFactory;
+  return NVD3ChartFactory;
 
 });

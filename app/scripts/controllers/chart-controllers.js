@@ -1,4 +1,3 @@
-//new move.
 'use strict';
 
 /**
@@ -11,21 +10,17 @@
  * @author madhuka udantha
  */
 
-angular.module('apacheZeppelinGsocApp').controller('ChartCtrl', function($scope, ChartFactory, GoogleChartFactory, HighChartFactory) {
+angular.module('apacheZeppelinGsocApp').controller('ChartCtrl', function($scope, ChartFactory, GoogleChartFactory, HighChartFactory, NVD3ChartFactory) {
 
   var vm = this;
-  // var libraryName = [ { 'library': 'NVD3Chart', 'model':NVD3Chart}, { 'library':'highxChart', 'model':highxChart}, { 'library': 'googlexChart','model':googlexChart}];
   var myChart = {};
-  //myChart.setChartLib('highxChart',highxChart);
-  //var myChart = googleChartFactory;
-  //var myChart ={};
-  console.log(myChart);
+
   var libraryName = [{
     'library': 'NVD3Chart'
   }, {
-    'library': 'highxChart'
+    'library': 'highChart'
   }, {
-    'library': 'googlexChart'
+    'library': 'googleChart'
   }];
 
   var chartTypes = ['Line', 'Bar'];
@@ -33,9 +28,6 @@ angular.module('apacheZeppelinGsocApp').controller('ChartCtrl', function($scope,
   function drawChart(data) {
     console.log('draw the chart ' + myChart.lib);
     console.log(myChart);
-    //getting nvd3 chart sample
-
-
     if (myChart.model !== null) {
       renderChart(myChart.model, data);
       //nvd3 axis update
@@ -58,12 +50,26 @@ angular.module('apacheZeppelinGsocApp').controller('ChartCtrl', function($scope,
 
   function loadChartLibrary(libraryIndex) {
     //loading chart library model
-    myChart.lib = libraryName[libraryIndex];
-
-    console.log(myChart.lib.library);
-    setButtonActive('chartLibraryButton', myChart.lib.library);
-    myChart = HighChartFactory;
-    vm.chartConfig.series[0].data = HighChartFactory.data;
+    //myChart.lib = libraryName[libraryIndex];
+    console.log('libraryName[libraryIndex]--->');
+    console.log(libraryName[libraryIndex]);
+    setButtonActive('chartLibraryButton', libraryName[libraryIndex].library);
+    switch(libraryIndex) {
+    case 0:
+        myChart = NVD3ChartFactory;
+        //vm.options = ncd3Chart1.options;
+        vm.data[0].values = NVD3ChartFactory.data;
+        break;
+    case 1:
+        myChart = HighChartFactory;
+        vm.chartConfig.series[0].data = HighChartFactory.data;        
+        break;
+    case 2:
+        myChart = GoogleChartFactory;
+        vm.chart.data.rows = GoogleChartFactory.data;
+        break;
+}
+    
     drawChart(data);
   }
 
@@ -72,46 +78,10 @@ angular.module('apacheZeppelinGsocApp').controller('ChartCtrl', function($scope,
     //To-Do CHart model will be completing for rendering the chart
   }
 
-  //Chart models
-
-  //high chart
-  /*  function highChartModel(d) {
-      return +d.Length;
-    }
-
-
-    function getHighChart(error, rows) {
-      vm.chartConfig.series[0].data = rows;
-    }
-
-    var highxChart = {
-      model: highChartModel,
-      get: getHighChart
-    };*/
-
-  //NVD3 Chart 
 
   function getData(fileName) {
     return d3.csv('data/' + fileName + '.csv');
   }
-  /*
-    function getNVD3(error, rows) {
-      vm.data[0].values = rows;
-    }
-
-    function nvd3Model(d) {
-      return {
-        label: d.Make,
-        value: +d.Length,
-        valuex: +d.No
-      };
-    }
-
-    var NVD3Chart = {
-      model: nvd3Model,
-      get: getNVD3
-    };*/
-
 
   //deafult button picker
   var active = {

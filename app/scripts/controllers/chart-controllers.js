@@ -11,13 +11,14 @@
  * @author madhuka udantha
  */
 
-angular.module('apacheZeppelinGsocApp').controller('ChartCtrl', function($scope, chartFactory, googleChartFactory) {
+angular.module('apacheZeppelinGsocApp').controller('ChartCtrl', function($scope, chartFactory, googleChartFactory, highChartFactory) {
 
   var vm = this;
   // var libraryName = [ { 'library': 'NVD3Chart', 'model':NVD3Chart}, { 'library':'highxChart', 'model':highxChart}, { 'library': 'googlexChart','model':googlexChart}];
-  //var myChart = chartFactory;
-  //myChart.setChartLib('googleChart',{});
-  var myChart = googleChartFactory;
+  var myChart = {};
+  //myChart.setChartLib('highxChart',highxChart);
+  //var myChart = googleChartFactory;
+  //var myChart ={};
   console.log(myChart);
   var libraryName = [{
     'library': 'NVD3Chart'
@@ -29,20 +30,22 @@ angular.module('apacheZeppelinGsocApp').controller('ChartCtrl', function($scope,
 
   var chartTypes = ['Line', 'Bar'];
 
-  function drawChart() {
-    console.log('draw the chart ' + myChart.library);
+  function drawChart(data) {
+    console.log('draw the chart ' + myChart.lib);
+    console.log(myChart);
     //getting nvd3 chart sample
-    console.log(ncd3Chart1.options);
 
-    if (myChart.model !== null) {
-      renderChart(myChart.model, data);
+
+    if (myChart.lib.model !== null) {
+      renderChart(myChart.lib.model, data);
       //nvd3 axis update
     }
   }
 
-  function renderChart(chart, data) {
+  function renderChart(chart, datax) {
     console.log('drawing....');
-    data.row(chart.model).get(chart.get);
+    console.log(datax);
+    datax.row(chart.model).get(chart.get);
   }
   var data = {};
 
@@ -50,9 +53,11 @@ angular.module('apacheZeppelinGsocApp').controller('ChartCtrl', function($scope,
     console.log('loading data ' + fileName);
     setButtonActive('dataButton', fileName);
     data = getData(fileName);
-
-    console.log(data);
-    drawChart();
+    myChart = chartFactory;
+    myChart.setChartLib('highxChart', highxChart);
+    // console.log(myChart);
+    // console.log(data);
+    drawChart(data);
   }
 
   function loadChartLibrary(libraryIndex) {
@@ -60,7 +65,7 @@ angular.module('apacheZeppelinGsocApp').controller('ChartCtrl', function($scope,
     myChart.lib = libraryName[libraryIndex];
     console.log(myChart.lib.library);
     setButtonActive('chartLibraryButton', myChart.lib.library);
-
+    drawChart();
   }
 
   function loadChartType(chartType) {
@@ -77,7 +82,7 @@ angular.module('apacheZeppelinGsocApp').controller('ChartCtrl', function($scope,
 
 
   function getHighChart(error, rows) {
-    // $scope.chartConfig.series[0].data = rows;
+    vm.chartConfig.series[0].data = rows;
   }
 
   var highxChart = {
@@ -92,7 +97,7 @@ angular.module('apacheZeppelinGsocApp').controller('ChartCtrl', function($scope,
   }
 
   function getNVD3(error, rows) {
-    // $scope.data[0].values = rows;
+    vm.data[0].values = rows;
   }
 
   function nvd3Model(d) {

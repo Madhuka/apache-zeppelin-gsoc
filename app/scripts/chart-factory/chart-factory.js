@@ -9,20 +9,20 @@
  *
  */
 
-angular.module('apacheZeppelinGsocApp').factory('chartFactory', function() {
- 
-   var chart = {
-    lib: {},
-    type: {}
+angular.module('apacheZeppelinGsocApp').factory('ChartFactory', function() {
+
+  //Genric Chart model
+  var ChartFactory = function(chartLibName, chartModel) {
+    this.libname = chartLibName;
+    this.model = chartModel;
+    this.type = {};
+    this.data = {};
   };
 
-  chart.setChartType = function(chartType) {
-    chart.type = chartType;
-  };
-  chart.setChartLib = function(chartLib,chartModel) {
-    chart.lib.name = chartLib;
-    chart.lib.model = chartModel;
+  ChartFactory.setChartType = function(chartType) {
+    this.type = chartType;
   };
 
-  return chart;
+
+  return ChartFactory;
 });

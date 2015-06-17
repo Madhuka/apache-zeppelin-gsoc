@@ -11,7 +11,7 @@
  * @author madhuka udantha
  */
 
-angular.module('apacheZeppelinGsocApp').controller('ChartCtrl', function($scope, chartFactory, googleChartFactory, highChartFactory) {
+angular.module('apacheZeppelinGsocApp').controller('ChartCtrl', function($scope, ChartFactory, GoogleChartFactory, HighChartFactory) {
 
   var vm = this;
   // var libraryName = [ { 'library': 'NVD3Chart', 'model':NVD3Chart}, { 'library':'highxChart', 'model':highxChart}, { 'library': 'googlexChart','model':googlexChart}];
@@ -36,8 +36,8 @@ angular.module('apacheZeppelinGsocApp').controller('ChartCtrl', function($scope,
     //getting nvd3 chart sample
 
 
-    if (myChart.lib.model !== null) {
-      renderChart(myChart.lib.model, data);
+    if (myChart.model !== null) {
+      renderChart(myChart.model, data);
       //nvd3 axis update
     }
   }
@@ -53,19 +53,18 @@ angular.module('apacheZeppelinGsocApp').controller('ChartCtrl', function($scope,
     console.log('loading data ' + fileName);
     setButtonActive('dataButton', fileName);
     data = getData(fileName);
-    myChart = chartFactory;
-    myChart.setChartLib('highxChart', highxChart);
-    // console.log(myChart);
-    // console.log(data);
-    drawChart(data);
+
   }
 
   function loadChartLibrary(libraryIndex) {
     //loading chart library model
     myChart.lib = libraryName[libraryIndex];
+
     console.log(myChart.lib.library);
     setButtonActive('chartLibraryButton', myChart.lib.library);
-    drawChart();
+    myChart = HighChartFactory;
+    vm.chartConfig.series[0].data = HighChartFactory.data;
+    drawChart(data);
   }
 
   function loadChartType(chartType) {
@@ -76,42 +75,42 @@ angular.module('apacheZeppelinGsocApp').controller('ChartCtrl', function($scope,
   //Chart models
 
   //high chart
-  function highChartModel(d) {
-    return +d.Length;
-  }
+  /*  function highChartModel(d) {
+      return +d.Length;
+    }
 
 
-  function getHighChart(error, rows) {
-    vm.chartConfig.series[0].data = rows;
-  }
+    function getHighChart(error, rows) {
+      vm.chartConfig.series[0].data = rows;
+    }
 
-  var highxChart = {
-    model: highChartModel,
-    get: getHighChart
-  };
+    var highxChart = {
+      model: highChartModel,
+      get: getHighChart
+    };*/
 
   //NVD3 Chart 
 
   function getData(fileName) {
     return d3.csv('data/' + fileName + '.csv');
   }
+  /*
+    function getNVD3(error, rows) {
+      vm.data[0].values = rows;
+    }
 
-  function getNVD3(error, rows) {
-    vm.data[0].values = rows;
-  }
+    function nvd3Model(d) {
+      return {
+        label: d.Make,
+        value: +d.Length,
+        valuex: +d.No
+      };
+    }
 
-  function nvd3Model(d) {
-    return {
-      label: d.Make,
-      value: +d.Length,
-      valuex: +d.No
-    };
-  }
-
-  var NVD3Chart = {
-    model: nvd3Model,
-    get: getNVD3
-  };
+    var NVD3Chart = {
+      model: nvd3Model,
+      get: getNVD3
+    };*/
 
 
   //deafult button picker

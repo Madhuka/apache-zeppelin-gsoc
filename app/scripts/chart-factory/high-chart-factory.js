@@ -8,11 +8,10 @@
  *
  */
 
-angular.module('apacheZeppelinGsocApp').factory('highChartFactory', function(chartFactory) {
+angular.module('apacheZeppelinGsocApp').factory('HighChartFactory', function(ChartFactory) {
 
-  var vm = this;
-  //high chart chart
-  var highChartFactory = chartFactory;
+
+
 
   //high chart
   function highChartModel(d) {
@@ -21,9 +20,7 @@ angular.module('apacheZeppelinGsocApp').factory('highChartFactory', function(cha
 
 
   function getHighChart(error, rows) {
-    //$scope.chartConfig.series[0].data = rows;
-    console.log(rows);
-    return rows;
+    HighChartFactory.data = rows;
   }
 
   var highxChart = {
@@ -31,11 +28,13 @@ angular.module('apacheZeppelinGsocApp').factory('highChartFactory', function(cha
     get: getHighChart
   };
 
-  highChartFactory.setChartLib('highxChart', highxChart);
+  //highchart chart
+  var HighChartFactory = new ChartFactory('highxChart', highxChart);
+
 
   // define a new internal private method for this chart object
   function setChartAxis() {}
 
-  return highChartFactory;
+  return HighChartFactory;
 
 });

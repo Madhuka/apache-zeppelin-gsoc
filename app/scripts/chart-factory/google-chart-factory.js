@@ -8,11 +8,7 @@
  *
  */
 
-angular.module('apacheZeppelinGsocApp').factory('googleChartFactory', function(chartFactory) {
-
-
-  //google chart
-  var googleChartFactory = chartFactory;
+angular.module('apacheZeppelinGsocApp').factory('GoogleChartFactory', function(ChartFactory) {
 
   function googleChartModel(d) {
     return {
@@ -25,7 +21,7 @@ angular.module('apacheZeppelinGsocApp').factory('googleChartFactory', function(c
   }
 
   function getGoogleChart(error, rows) {
-   //$scope.chart.data.rows = rows;
+    GoogleChartFactory.data = rows;
   }
 
   var googlexChart = {
@@ -33,12 +29,13 @@ angular.module('apacheZeppelinGsocApp').factory('googleChartFactory', function(c
     get: getGoogleChart
   };
 
-  chartFactory.setChartLib('googleChart', googlexChart);
+  //google chart
+  var GoogleChartFactory = new ChartFactory('googleChart', googlexChart);
 
   // define a new internal private method for this chart object
   function setChartAxis() {
   }
 
-  return googleChartFactory;
+  return GoogleChartFactory;
   
 });

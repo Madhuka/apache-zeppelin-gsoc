@@ -43,12 +43,11 @@ angular.module('apacheZeppelinGsocApp').factory('HighChartFactory', function(Cha
     HighChartChartModel.series[0].data = rows;
   }
 
-  function setChatTypeView(chartType){
+  function setChatTypeView(chartType) {
     HighChartFactory.viewModel.options.chart.type = chartType;
   }
 
-  function setChartAxis() { 
-  }
+  function setChartAxis() {}
 
   var highxChart = {
     model: highChartModel,
@@ -58,13 +57,13 @@ angular.module('apacheZeppelinGsocApp').factory('HighChartFactory', function(Cha
   //setting up the highchart and chart view model for this chart
   var HighChartFactory = new ChartFactory('highxChart', highxChart);
   HighChartFactory.viewModel = HighChartChartModel;
-  
+
 
   HighChartFactory.setChartType = function(chartType) {
-    HighChartFactory.type = chartType; 
-    setChatTypeView(chartType);   
- };
-    
+    HighChartFactory.type = chartType;
+    setChatTypeView(chartType);
+  };
+
 
 
   return HighChartFactory;

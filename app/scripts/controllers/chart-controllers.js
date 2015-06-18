@@ -46,7 +46,8 @@ angular.module('apacheZeppelinGsocApp').controller('ChartCtrl', function($scope,
 
     setButtonActive('dataButton', fileName);
     data = getData(fileName);
-    console.log(ChartService.getHighChart().type);
+    //ChartService.getHighChart().type
+    //console.log(ChartService.getHighChart().type);
     //drawChart(data);
     //vm.chartConfig  = ChartService.getHChart();
     //vm.chartConfig  = ChartService.getHighChart().type;
@@ -67,7 +68,7 @@ angular.module('apacheZeppelinGsocApp').controller('ChartCtrl', function($scope,
         break;
       case 1:
         //chart is genrated from servie, service is using HighChartfactory.HighCHart Factory is extended version of ChartFactory.         
-        myNewChart = ChartService.getHighChart();
+        myNewChart = ChartService.getHighChart('bar');
         vm.chartConfig = myNewChart.viewModel;
         //to work old pattern (Using Factory)
         myChart = myNewChart;

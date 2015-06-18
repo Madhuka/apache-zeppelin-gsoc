@@ -24,6 +24,5 @@ angular.module('apacheZeppelinGsocApp').factory('ChartFactory', function() {
     ChartFactory.type = chartType;
   };
 
-
   return ChartFactory;
 });

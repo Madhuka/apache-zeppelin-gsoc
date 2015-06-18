@@ -10,7 +10,7 @@
  * @author madhuka udantha
  */
 
-angular.module('apacheZeppelinGsocApp').controller('ChartCtrl', function($scope, ChartFactory, GoogleChartFactory, HighChartFactory, NVD3ChartFactory, ChartService) {
+angular.module('apacheZeppelinGsocApp').controller('ChartCtrl', function($scope, ChartFactory, GoogleChartFactory, HighChartFactory, NVD3ChartFactory, ChartService, ChartMetaService) {
 
   var vm = this;
   var myChart = {};
@@ -28,14 +28,39 @@ angular.module('apacheZeppelinGsocApp').controller('ChartCtrl', function($scope,
   function drawChart(data) {
     console.log('draw the chart ' + myChart.lib);
     console.log(myChart);
+    if (ChartMetaService.isMetaCompleted()) {
+      var myNewChart = {};
+      switch (ChartMetaService.getChartLib()) {
+        case 'NVD3Chart':
+          //chart is genrated from servie, service is using HighChartfactory.HighCHart Factory is extended version of ChartFactory.  
+          myNewChart = ChartService.getNVD3Chart('discreteBarChart');
+          vm.data[0] = myNewChart.viewModel.data[0];
+          vm.options = myNewChart.viewModel.options;
+          //to work old pattern (Using Factory) 
+          //Will be remove after demo
+          myChart = myNewChart;
+          break;
+        case 'highChart':
+          myNewChart = ChartService.getHighChart('bar');
+          vm.chartConfig = myNewChart.viewModel;
+          myChart = myNewChart;
+          break;
+        case 'googleChart':
+          myNewChart = ChartService.getGoogleChart('BarChart');
+          vm.chart = myNewChart.viewModel;
+          myChart = myNewChart;
+          break;
 
-    if (myChart.model !== null) {
+      }
+
+
       renderChart(myChart.model, data);
       //nvd3 axis update
     }
   }
 
-  function renderChart(chart, datax) {
+  function renderChart(chart, datax, fileName) {
+    //var data = getData(fileName);
     console.log('drawing....');
     datax.row(chart.model).get(chart.get);
   }
@@ -43,52 +68,30 @@ angular.module('apacheZeppelinGsocApp').controller('ChartCtrl', function($scope,
 
   function loadData(fileName) {
     console.log('loading data ' + fileName);
-
     setButtonActive('dataButton', fileName);
     data = getData(fileName);
-    //ChartService.getHighChart().type
-    //console.log(ChartService.getHighChart().type);
-    //drawChart(data);
-    //vm.chartConfig  = ChartService.getHChart();
-    //vm.chartConfig  = ChartService.getHighChart().type;
+    ChartMetaService.setChartDataSetName(fileName);
+
 
   }
 
   function loadChartLibrary(libraryIndex) {
-    var myNewChart = {};
+
     //loading chart library model
     //myChart.lib = libraryName[libraryIndex];
     console.log('libraryName[libraryIndex]--->');
     console.log(libraryName[libraryIndex]);
     setButtonActive('chartLibraryButton', libraryName[libraryIndex].library);
-    switch (libraryIndex) {
-      case 0:
-        //chart is genrated from servie, service is using HighChartfactory.HighCHart Factory is extended version of ChartFactory.  
-        myNewChart = ChartService.getNVD3Chart('discreteBarChart');
-        vm.data[0] = myNewChart.viewModel.data[0];
-        vm.options = myNewChart.viewModel.options;
-        //to work old pattern (Using Factory) 
-        //Will be remove after demo
-        myChart = myNewChart;
-        break;
-      case 1:               
-        myNewChart = ChartService.getHighChart('bar');
-        vm.chartConfig = myNewChart.viewModel;
-        myChart = myNewChart;
-        break;
-      case 2:
-        myNewChart = ChartService.getGoogleChart('BarChart');
-        vm.chart = myNewChart.viewModel;
-        myChart = myNewChart;
-        break;
-
-    }
-
+    ChartMetaService.setChartLib(libraryName[libraryIndex].library);
     drawChart(data);
   }
 
   function loadChartType(chartType) {
+    console.log('-------------xxx---------');
+    ChartMetaService.setChartType(chartType);
+    console.log(ChartMetaService.getChartLib());
     setButtonActive('chartTypeButton', chartType);
+
     //To-Do CHart model will be completing for rendering the chart
   }
 

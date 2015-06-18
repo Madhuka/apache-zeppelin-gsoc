@@ -10,6 +10,7 @@
 
 angular.module('apacheZeppelinGsocApp').factory('NVD3ChartFactory', function(ChartFactory) {
 
+  var ChartList = {'Bar':'discreteBarChart','Line':'lineChart'};
   ////TO-DO Sample Data will remove after model set.
   var NVD3ChartChartModel = {
     options: {
@@ -75,7 +76,7 @@ angular.module('apacheZeppelinGsocApp').factory('NVD3ChartFactory', function(Cha
   }
 
   function setChatTypeView(chartType) {
-    NVD3ChartFactory.viewModel.options.chart.type = chartType;
+    NVD3ChartFactory.viewModel.options.chart.type = ChartList[chartType];
   }
 
   var NVD3Chart = {

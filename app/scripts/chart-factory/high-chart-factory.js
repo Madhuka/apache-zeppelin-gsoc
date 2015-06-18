@@ -11,7 +11,7 @@
 angular.module('apacheZeppelinGsocApp').factory('HighChartFactory', function(ChartFactory) {
 
 
-
+  var ChartList = {'Bar':'bar','Line':'line'};
   //highChart model
   var HighChartChartModel = {
     options: {
@@ -44,7 +44,7 @@ angular.module('apacheZeppelinGsocApp').factory('HighChartFactory', function(Cha
   }
 
   function setChatTypeView(chartType) {
-    HighChartFactory.viewModel.options.chart.type = chartType;
+    HighChartFactory.viewModel.options.chart.type = ChartList[chartType];
   }
 
   function setChartAxis() {}

@@ -10,10 +10,12 @@
 
 angular.module('apacheZeppelinGsocApp').factory('GoogleChartFactory', function(ChartFactory) {
 
+
+  var ChartList = {'Bar':'BarChart','Line':'LineChart'};
   //googleChart model (sample chart data model)
   //TO-DO Sample Data will remove after model set.
   var GoogelChartChartModel = {
-    type: 'bar',
+    type: 'BarChart',
     cssStyle : 'height:400px; width:600px;',
     data : {
     'cols': [{
@@ -90,7 +92,7 @@ formatters : {}
   };
 
    function setChatTypeView(chartType){
-    GoogleChartFactory.viewModel.type = chartType;
+    GoogleChartFactory.viewModel.type = ChartList[chartType];
   }
 
   //google chart

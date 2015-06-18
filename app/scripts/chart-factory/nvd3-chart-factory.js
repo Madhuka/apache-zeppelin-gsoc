@@ -10,7 +10,7 @@
 
 angular.module('apacheZeppelinGsocApp').factory('NVD3ChartFactory', function(ChartFactory) {
 
-
+  ////TO-DO Sample Data will remove after model set.
   var NVD3ChartChartModel = {
     options: {
       chart: {

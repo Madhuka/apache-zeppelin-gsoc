@@ -63,25 +63,22 @@ angular.module('apacheZeppelinGsocApp').controller('ChartCtrl', function($scope,
     setButtonActive('chartLibraryButton', libraryName[libraryIndex].library);
     switch (libraryIndex) {
       case 0:
+        //chart is genrated from servie, service is using HighChartfactory.HighCHart Factory is extended version of ChartFactory.  
         myNewChart = ChartService.getNVD3Chart('discreteBarChart');
         vm.data[0] = myNewChart.viewModel.data[0];
         vm.options = myNewChart.viewModel.options;
-        //to work old pattern (Using Factory)
+        //to work old pattern (Using Factory) 
+        //Will be remove after demo
         myChart = myNewChart;
-        //myChart = NVD3ChartFactory;
-        //vm.data[0].values = NVD3ChartFactory.data;
         break;
-      case 1:
-        //chart is genrated from servie, service is using HighChartfactory.HighCHart Factory is extended version of ChartFactory.         
+      case 1:               
         myNewChart = ChartService.getHighChart('bar');
         vm.chartConfig = myNewChart.viewModel;
-        //to work old pattern (Using Factory)
         myChart = myNewChart;
         break;
       case 2:
         myNewChart = ChartService.getGoogleChart('BarChart');
         vm.chart = myNewChart.viewModel;
-        //to work old pattern (Using Factory)
         myChart = myNewChart;
         break;
 

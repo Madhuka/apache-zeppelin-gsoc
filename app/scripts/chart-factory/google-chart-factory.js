@@ -10,7 +10,8 @@
 
 angular.module('apacheZeppelinGsocApp').factory('GoogleChartFactory', function(ChartFactory) {
 
-  //highChart model
+  //googleChart model (sample chart data model)
+  //TO-DO Sample Data will remove after model set.
   var GoogelChartChartModel = {
     type: 'bar',
     cssStyle : 'height:400px; width:600px;',

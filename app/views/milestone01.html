@@ -1,52 +1,50 @@
 <div class="inner cover" ng-controller="ChartCtrl as chartctrl">
-
-
-    <h3 class="cover-heading" >MileStone - 01</h3>
+  <h3 class="cover-heading">MileStone - 01</h3>
+  <div>
+    <!--sample data set is to pick from CSV file-->
     <div>
-
-    <!--sample data set is to pick from csv file-->
-    <div>
-        <label>1. Select the Data set: </label>
-        <div class="btn-group">
-            <a class="btn btn-default" ng-class="{'active': chartctrl.isButtonActive('dataButton','car')}" ng-click="chartctrl.loadData('car')"><i class="fa fa-h-square"> Car</i></a>
-            <a class="btn btn-default" ng-class="{'active': chartctrl.isButtonActive('dataButton','bike')}" ng-click="chartctrl.loadData('bike')"><i class="fa fa-google"> Bike</i></a>
-        </div>
+      <label>1. Select the Data set: </label>
+      <div class="btn-group">
+        <a class="btn btn-default" ng-class="{'active': chartctrl.isButtonActive('dataButton','car')}"
+        ng-click="chartctrl.loadData('car')"><i class="fa fa-h-square"> Car</i></a>
+        <a class="btn btn-default" ng-class="{'active': chartctrl.isButtonActive('dataButton','bike')}"
+        ng-click="chartctrl.loadData('bike')"><i class="fa fa-google"> Bike</i></a>
+      </div>
     </div>
     <br>
-
     <div ng-show="chartctrl.isButtonSelected('dataButton')">
-        <label>2. Select the Chart Library</label>
-        <div class="btn-group">
-            <a class="btn btn-default" ng-class="{'active': chartctrl.isButtonActive('chartLibraryButton','highChart')}" ng-click="chartctrl.loadChartLibrary(1)"><i class="fa fa-h-square"> HighChart</i></a>
-            <a class="btn btn-default" ng-class="{'active': chartctrl.isButtonActive('chartLibraryButton','googleChart')}" ng-click="chartctrl.loadChartLibrary(2)"><i class="fa fa-google"> GooglrChart</i></a>
-            <a class="btn btn-default" ng-class="{'active': chartctrl.isButtonActive('chartLibraryButton','NVD3Chart')}" ng-click="chartctrl.loadChartLibrary(0)"><i class="fa fa-align-right"> NVD3 Chart</i></a>
-        </div>        
+      <label>2. Select the Chart Library</label>
+      <div class="btn-group">
+        <a class="btn btn-default" ng-class="{'active': chartctrl.isButtonActive('chartLibraryButton','highChart')}"
+        ng-click="chartctrl.loadChartLibrary(1)"><i class="fa fa-h-square"> HighChart</i></a>
+        <a class="btn btn-default" ng-class="{'active': chartctrl.isButtonActive('chartLibraryButton','googleChart')}"
+        ng-click="chartctrl.loadChartLibrary(2)"><i class="fa fa-google"> GooglrChart</i></a>
+        <a class="btn btn-default" ng-class="{'active': chartctrl.isButtonActive('chartLibraryButton','NVD3Chart')}"
+        ng-click="chartctrl.loadChartLibrary(0)"><i class="fa fa-align-right"> NVD3 Chart</i></a>
+      </div>
     </div>
-
     <!--chart type can be picked-->
     <br>
     <div ng-show="chartctrl.isButtonSelected('chartLibraryButton')">
-        <label>3. Selct the Chart Type</label>
-        <div class="btn-group">
-            <a class="btn btn-default" ng-class="{'active': chartctrl.isButtonActive('chartTypeButton','Line')}" ng-click="chartctrl.loadChartType('Line')"><i class="fa fa-line-chart"> Line Chart</i></a>
-            <a class="btn btn-default" ng-class="{'active': chartctrl.isButtonActive('chartTypeButton','Bar')}" ng-click="chartctrl.loadChartType('Bar')"><i class="fa fa-bar-chart"> Bar Chart</i></a>
-        </div>
+      <label>3. Select the Chart Type</label>
+      <div class="btn-group">
+        <a class="btn btn-default" ng-class="{'active': chartctrl.isButtonActive('chartTypeButton','Line')}"
+        ng-click="chartctrl.loadChartType('Line')"><i class="fa fa-line-chart"> Line Chart</i></a>
+        <a class="btn btn-default" ng-class="{'active': chartctrl.isButtonActive('chartTypeButton','Bar')}"
+        ng-click="chartctrl.loadChartType('Bar')"><i class="fa fa-bar-chart"> Bar Chart</i></a>
+      </div>
     </div>
-
     <!--charts-->
     <div class="box" ng-show="chartctrl.isButtonActive('chartLibraryButton','highChart')">
-        <label>High Chart</label>
-        <highchart id="chart1" config="chartctrl.chartConfig"></highchart>
+      <label>High Chart</label>
+      <highchart id="chart1" config="chartctrl.chartConfig"></highchart>
     </div>
-
     <div class="box" ng-show="chartctrl.isButtonActive('chartLibraryButton','googleChart')">
-        <label>Google Chart</label>
-        <div google-chart chart="chartctrl.chart" style="{{chart.cssStyle}}" />
-    </div>
-
+      <label>Google Chart</label>
+      <div google-chart chart="chartctrl.chart"
+      style="{{chart.cssStyle}}" /> </div>
     <div class="box" ng-show="chartctrl.isButtonActive('chartLibraryButton','NVD3Chart')">
-        <label>NVD3 Chart</label>
-        <nvd3 options='chartctrl.options' data='chartctrl.data'></nvd3>
+      <label>NVD3 Chart</label>
+      <nvd3 options='chartctrl.options' data='chartctrl.data'></nvd3>
     </div>
-
-</div>
+  </div>

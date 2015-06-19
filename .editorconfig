@@ -10,6 +10,7 @@ root = true
 # Change these settings to your own preference
 indent_style = space
 indent_size = 2
+draw_white_space = all
 
 # We recommend you to keep these unchanged
 end_of_line = lf

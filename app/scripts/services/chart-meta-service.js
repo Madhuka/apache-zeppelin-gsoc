@@ -17,7 +17,7 @@ angular.module('apacheZeppelinGsocApp').service('ChartMetaService', function() {
     ChartType:null,
     ChartDataSetName:null
   }
- 
+
   //getters
   this.getChartLib = function() {
     return MetaModel.ChartLib ;
@@ -48,5 +48,5 @@ angular.module('apacheZeppelinGsocApp').service('ChartMetaService', function() {
  this.isMetaCompleted = function() {
     return MetaModel.ChartType !== null ;
   };
- 
+
 });

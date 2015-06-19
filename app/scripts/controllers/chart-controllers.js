@@ -5,7 +5,7 @@
  * @name apacheZeppelinGsocApp.controller:ChartCtrl
  * @description
  * # ChartCtrl
- * Controller of the top navigation, mainly use for the dropdown menu
+ * Controller of chart library, type.
  *
  * @author madhuka udantha
  */
@@ -53,14 +53,16 @@ angular.module('apacheZeppelinGsocApp').controller('ChartCtrl', function($scope,
   }
 
   function drawChart(data) {
-    //Checking chart requirement is completed    
+    //Checking chart requirement is completed
     if (ChartMetaService.isMetaCompleted()) {
       var myNewChart = {};
       var myChartType = ChartMetaService.getChartType();
       console.log(myChartType);
       switch (ChartMetaService.getChartLib()) {
         case 'NVD3Chart':
-          //chart is genrated from servie, service is using HighChartfactory.HighCHart Factory is extended version of ChartFactory.  
+          //set data for NVD3
+          vm.data = [];
+          //chart is generated from service, service is using HighChartfactory.HighCHart Factory is extended version of ChartFactory.
           myNewChart = ChartService.getNVD3Chart(myChartType);
           vm.data[0] = myNewChart.viewModel.data[0];
           vm.options = myNewChart.viewModel.options;
@@ -73,12 +75,9 @@ angular.module('apacheZeppelinGsocApp').controller('ChartCtrl', function($scope,
           myNewChart = ChartService.getGoogleChart(myChartType);
           vm.chart = myNewChart.viewModel;
           break;
-
       }
-
-
       renderChart(myNewChart.model, data);
-      //nvd3 axis update
+      //NVD3 axis update
     }
   }
 
@@ -86,7 +85,7 @@ angular.module('apacheZeppelinGsocApp').controller('ChartCtrl', function($scope,
     return d3.csv('data/' + fileName + '.csv');
   }
 
-  //deafult button picker
+  //default button picker
   var active = {
     'dataButton': false,
     'chartLibraryButton': false,
@@ -110,11 +109,5 @@ angular.module('apacheZeppelinGsocApp').controller('ChartCtrl', function($scope,
   vm.isButtonSelected = isButtonSelected;
   vm.loadChartLibrary = loadChartLibrary;
   vm.loadChartType = loadChartType;
-  /*To-DO (Testing) chart lib testing for lib */
-  vm.options = ncd3Chart1.options;
-  vm.data = ncd3Chart1.data;
-  vm.chartConfig = highchart.chartConfig;
-  vm.chart = googleChart;
-  /*END*/
 
 });

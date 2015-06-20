@@ -5,22 +5,18 @@
     <div>
       <label>1. Select the Data set: </label>
       <div class="btn-group">
-        <a class="btn btn-default" ng-class="{'active': chartctrl.isButtonActive('dataButton','car')}"
-        ng-click="chartctrl.loadData('car')"><i class="fa fa-h-square"> Car</i></a>
-        <a class="btn btn-default" ng-class="{'active': chartctrl.isButtonActive('dataButton','bike')}"
-        ng-click="chartctrl.loadData('bike')"><i class="fa fa-google"> Bike</i></a>
+        <a ng-repeat="file in chartctrl.files" class="btn btn-default"
+        ng-class="{'active': chartctrl.isButtonActive('dataButton',file)}"
+        ng-click="chartctrl.loadData(file)">{{file}}</a>
       </div>
     </div>
     <br>
     <div ng-show="chartctrl.isButtonSelected('dataButton')">
       <label>2. Select the Chart Library</label>
       <div class="btn-group">
-        <a class="btn btn-default" ng-class="{'active': chartctrl.isButtonActive('chartLibraryButton','highChart')}"
-        ng-click="chartctrl.loadChartLibrary(1)"><i class="fa fa-h-square"> HighChart</i></a>
-        <a class="btn btn-default" ng-class="{'active': chartctrl.isButtonActive('chartLibraryButton','googleChart')}"
-        ng-click="chartctrl.loadChartLibrary(2)"><i class="fa fa-google"> GooglrChart</i></a>
-        <a class="btn btn-default" ng-class="{'active': chartctrl.isButtonActive('chartLibraryButton','NVD3Chart')}"
-        ng-click="chartctrl.loadChartLibrary(0)"><i class="fa fa-align-right"> NVD3 Chart</i></a>
+        <a ng-repeat="libName in chartctrl.libraryName" class="btn btn-default"
+        ng-class="{'active': chartctrl.isButtonActive('chartLibraryButton',libName.library)}"
+        ng-click="chartctrl.loadChartLibrary($index)">{{libName.library}}</a>
       </div>
     </div>
     <!--chart type can be picked-->
@@ -28,10 +24,10 @@
     <div ng-show="chartctrl.isButtonSelected('chartLibraryButton')">
       <label>3. Select the Chart Type</label>
       <div class="btn-group">
-        <a class="btn btn-default" ng-class="{'active': chartctrl.isButtonActive('chartTypeButton','Line')}"
-        ng-click="chartctrl.loadChartType('Line')"><i class="fa fa-line-chart"> Line Chart</i></a>
-        <a class="btn btn-default" ng-class="{'active': chartctrl.isButtonActive('chartTypeButton','Bar')}"
-        ng-click="chartctrl.loadChartType('Bar')"><i class="fa fa-bar-chart"> Bar Chart</i></a>
+        <a ng-repeat="chartTypeName in chartctrl.chartTypes" class="btn btn-default"
+        ng-class="{'active': chartctrl.isButtonActive('chartTypeButton',chartTypeName)}"
+        ng-click="chartctrl.loadChartType(chartTypeName)">
+        <i class="fa fa-chartTypeName-chart"> {{chartTypeName}} Chart</i></a>
       </div>
     </div>
     <!--charts-->

@@ -23,7 +23,9 @@ angular.module('apacheZeppelinGsocApp').controller('ChartCtrl', function($scope,
     'library': 'googleChart'
   }];
 
-  //var chartTypes = ['Line', 'Bar'];
+  var files = ['car','bike'];
+
+  var chartTypes = ['Line', 'Bar'];
 
   function renderChart(chart, datax) {
     datax.row(chart.model).get(chart.get);
@@ -109,5 +111,8 @@ angular.module('apacheZeppelinGsocApp').controller('ChartCtrl', function($scope,
   vm.isButtonSelected = isButtonSelected;
   vm.loadChartLibrary = loadChartLibrary;
   vm.loadChartType = loadChartType;
+  vm.files = files;
+  vm.libraryName = libraryName;
+  vm.chartTypes = chartTypes;
 
-});
+}

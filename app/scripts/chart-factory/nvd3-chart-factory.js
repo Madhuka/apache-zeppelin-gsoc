@@ -16,8 +16,8 @@ angular.module('apacheZeppelinGsocApp').factory('NVD3ChartFactory', function(Cha
     options: {
       chart: {
         type: 'discreteBarChart',
-        height: 300,
-        width: 400,
+        height: 400,
+        width: 500,
         margin: {
           top: 20,
           right: 20,

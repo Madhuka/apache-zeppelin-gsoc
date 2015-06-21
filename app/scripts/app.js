@@ -22,17 +22,9 @@ angular
       .when('/home', {
         templateUrl: 'views/about.html'
       })
-      .when('/chart', {
-        templateUrl: 'views/chart.html',
-        controller: 'ChartCtrl'
-      })
       .when('/milestone01', {
         templateUrl: 'views/milestone01.html',
-        controller: 'ChartCtrl'
-      })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
+        controller:'ChartCtrl'
       })
 	    .when('/contact', {
         templateUrl: 'views/contact.html'

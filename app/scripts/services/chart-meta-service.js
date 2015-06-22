@@ -14,9 +14,10 @@ angular.module('apacheZeppelinGsocApp').service('ChartMetaService', function() {
   /*Chart Meta Data Service*/
   var MetaModel = {
     ChartLib:null,
+    ChartTemplateURL:null,
     ChartType:null,
     ChartDataSetName:null
-  }
+  };
 
   //getters
   this.getChartLib = function() {
@@ -25,6 +26,10 @@ angular.module('apacheZeppelinGsocApp').service('ChartMetaService', function() {
 
   this.getChartType = function() {
     return MetaModel.ChartType ;
+  };
+
+  this.getChartTemplateURL = function() {
+    return MetaModel.ChartTemplateURL ;
   };
 
   this.getChartDataSetName = function() {
@@ -38,6 +43,10 @@ angular.module('apacheZeppelinGsocApp').service('ChartMetaService', function() {
 
   this.setChartType = function(ChartType) {
     MetaModel.ChartType = ChartType ;
+  };
+
+  this.setChartTemplateURL = function(ChartTemplateURL) {
+    MetaModel.ChartTemplateURL = ChartTemplateURL;
   };
 
   this.setChartDataSetName = function(ChartDataSetName) {

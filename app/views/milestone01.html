@@ -31,16 +31,7 @@
       </div>
     </div>
     <!--charts-->
-    <div class="box" ng-show="chartctrl.isButtonActive('chartLibraryButton','highChart')">
-      <label>High Chart</label>
-      <highchart id="chart1" config="chartctrl.chartConfig"></highchart>
-    </div>
-    <div class="box" ng-show="chartctrl.isButtonActive('chartLibraryButton','googleChart')">
-      <label>Google Chart</label>
-      <div google-chart chart="chartctrl.chart"
-      style="{{chart.cssStyle}}" /> </div>
-    <div class="box" ng-show="chartctrl.isButtonActive('chartLibraryButton','NVD3Chart')">
-      <label>NVD3 Chart</label>
-      <nvd3 options='chartctrl.options' data='chartctrl.data'></nvd3>
+    <div class="box" ng-include="chartctrl.getChartTemplateURL()">
     </div>
   </div>
+</div>

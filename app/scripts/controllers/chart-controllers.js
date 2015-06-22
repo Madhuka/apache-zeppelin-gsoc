@@ -16,11 +16,14 @@ angular.module('apacheZeppelinGsocApp').controller('ChartCtrl', function($scope,
   var myChart = {};
 
   var libraryName = [{
-    'library': 'NVD3Chart'
+    'library': 'NVD3Chart',
+    'template': 'views/charts/nvd3chart.html'
   }, {
-    'library': 'highChart'
+    'library': 'highChart',
+    'template': 'views/charts/highchart.html'
   }, {
-    'library': 'googleChart'
+    'library': 'googleChart',
+    'template': 'views/charts/googlechart.html'
   }];
 
   var files = ['car','bike'];
@@ -38,19 +41,23 @@ angular.module('apacheZeppelinGsocApp').controller('ChartCtrl', function($scope,
     data = getData(fileName);
     ChartMetaService.setChartDataSetName(fileName);
     drawChart(data);
-
   }
 
   function loadChartLibrary(libraryIndex) {
     setButtonActive('chartLibraryButton', libraryName[libraryIndex].library);
     ChartMetaService.setChartLib(libraryName[libraryIndex].library);
+    ChartMetaService.setChartTemplateURL(libraryName[libraryIndex].template);
     drawChart(data);
+  }
+
+  function getChartTemplateURL(libraryIndex) {
+    return ChartMetaService.getChartTemplateURL();
   }
 
   function loadChartType(chartType) {
     ChartMetaService.setChartType(chartType);
     setButtonActive('chartTypeButton', chartType);
-    drawChart(data);
+    drawChart(data);    
     //To-Do CHart model will be completing for rendering the chart
   }
 
@@ -114,5 +121,5 @@ angular.module('apacheZeppelinGsocApp').controller('ChartCtrl', function($scope,
   vm.files = files;
   vm.libraryName = libraryName;
   vm.chartTypes = chartTypes;
-
-}
+  vm.getChartTemplateURL = getChartTemplateURL;
+})

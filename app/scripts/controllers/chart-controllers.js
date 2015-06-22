@@ -47,6 +47,10 @@ angular.module('apacheZeppelinGsocApp').controller('ChartCtrl', function($scope,
     setButtonActive('chartLibraryButton', libraryName[libraryIndex].library);
     ChartMetaService.setChartLib(libraryName[libraryIndex].library);
     ChartMetaService.setChartTemplateURL(libraryName[libraryIndex].template);
+    if(ChartMetaService.getChartType() === null){
+      //setting default chart type
+      ChartMetaService.setChartType('Bar');
+    }
     drawChart(data);
   }
 
@@ -57,13 +61,12 @@ angular.module('apacheZeppelinGsocApp').controller('ChartCtrl', function($scope,
   function loadChartType(chartType) {
     ChartMetaService.setChartType(chartType);
     setButtonActive('chartTypeButton', chartType);
-    drawChart(data);    
+    drawChart(data);
     //To-Do CHart model will be completing for rendering the chart
   }
 
   function drawChart(data) {
     //Checking chart requirement is completed
-    if (ChartMetaService.isMetaCompleted()) {
       var myNewChart = {};
       var myChartType = ChartMetaService.getChartType();
       console.log(myChartType);
@@ -85,9 +88,10 @@ angular.module('apacheZeppelinGsocApp').controller('ChartCtrl', function($scope,
           vm.chart = myNewChart.viewModel;
           break;
       }
-      renderChart(myNewChart.model, data);
+      if (myNewChart.model){
+        renderChart(myNewChart.model, data);
+      }
       //NVD3 axis update
-    }
   }
 
   function getData(fileName) {
@@ -122,4 +126,4 @@ angular.module('apacheZeppelinGsocApp').controller('ChartCtrl', function($scope,
   vm.libraryName = libraryName;
   vm.chartTypes = chartTypes;
   vm.getChartTemplateURL = getChartTemplateURL;
-})
+});

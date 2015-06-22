@@ -34,24 +34,6 @@ angular.module('apacheZeppelinGsocApp').factory('GoogleChartFactory', function(
         }, {
           v: 14
         }]
-      }, {
-        c: [{
-          v: 'Mushroom'
-        }, {
-          v: 6
-        }]
-      }, {
-        c: [{
-          v: 'Hawaiian'
-        }, {
-          v: 5
-        }]
-      }, {
-        c: [{
-          v: 'Sausage'
-        }, {
-          v: 10
-        }]
       }]
     },
     options: {

@@ -44,21 +44,9 @@ angular.module('apacheZeppelinGsocApp').factory('NVD3ChartFactory', function(Cha
     data: [{
 
       values: [{
-        'label': 'A',
-        'value': 5,
+        'label': '',
+        'value': 1,
         'valuex': 0
-      }, {
-        'label': 'B',
-        'value': 10,
-        'valuex': 1
-      }, {
-        'label': 'C',
-        'value': 24,
-        'valuex': 2
-      }, {
-        'label': 'D',
-        'value': 8,
-        'valuex': 3
       }]
     }]
   };

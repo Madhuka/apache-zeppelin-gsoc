@@ -10,25 +10,14 @@
  * @author madhuka udantha
  */
 
-angular.module('apacheZeppelinGsocApp').controller('ChartCtrl', function($scope, ChartFactory, GoogleChartFactory, HighChartFactory, NVD3ChartFactory, ChartService, ChartMetaService) {
+angular.module('apacheZeppelinGsocApp').controller('ChartCtrl', function($scope, ChartFactory, GoogleChartFactory, HighChartFactory, NVD3ChartFactory, ChartService, ChartMetaService, chartConfig) {
 
-  var vm = this;
-  var myChart = {};
+  var vm = this,varmyChart = {};
 
-  var libraryName = [{
-    'library': 'NVD3Chart',
-    'template': 'views/charts/nvd3chart.html'
-  }, {
-    'library': 'highChart',
-    'template': 'views/charts/highchart.html'
-  }, {
-    'library': 'googleChart',
-    'template': 'views/charts/googlechart.html'
-  }];
-
-  var files = ['car','bike'];
-
-  var chartTypes = ['Line', 'Bar'];
+  //loading from chart config file.
+  var libraryName = chartConfig.libraryName;
+  var files = chartConfig.dataFiles;
+  var chartTypes = chartConfig.chartTypes;
 
   function renderChart(chart, datax) {
     datax.row(chart.model).get(chart.get);

@@ -16,7 +16,7 @@ angular.module('apacheZeppelinGsocApp').factory('NVD3ChartFactory', function(Cha
     options: {
       chart: {
         type: 'discreteBarChart',
-        height: 400,
+        height: 300,
         width: 500,
         margin: {
           top: 20,
@@ -42,7 +42,6 @@ angular.module('apacheZeppelinGsocApp').factory('NVD3ChartFactory', function(Cha
       }
     },
     data: [{
-
       values: [{
         'label': '',
         'value': 1,
@@ -80,11 +79,35 @@ angular.module('apacheZeppelinGsocApp').factory('NVD3ChartFactory', function(Cha
   NVD3ChartFactory.setChartType = function(chartType) {
     NVD3ChartFactory.type = chartType;
     setChatTypeView(chartType);
+
+    //loadYAxisLabel('car');
+  };
+
+  NVD3ChartFactory.setChartAxis = function(data) {
+    loadYAxisLabel(data);
   };
 
 
   // define a new internal private method for this chart object
-  function setChartAxis() {}
+  var nvd3AxisLabels = {};
+  function getNVD3Yaxis(error, rows) {
+    console.log(rows);
+    nvd3AxisLabels = rows;
+     NVD3ChartFactory.viewModel.options.chart.xAxis = {
+      'axisLabel': 'Make',
+      'tickFormat': function(d) {
+        return nvd3AxisLabels[d];
+      }
+    };
+  }
+
+  function nvd3YaxisModel(d) {
+    return d.Make;
+  }
+
+  function loadYAxisLabel(fileName) {
+    nvd3AxisLabels = d3.csv(fileName).row(nvd3YaxisModel).get(getNVD3Yaxis);
+  }
 
   return NVD3ChartFactory;
 

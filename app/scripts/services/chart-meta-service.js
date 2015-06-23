@@ -16,7 +16,8 @@ angular.module('apacheZeppelinGsocApp').service('ChartMetaService', function() {
     ChartLib:null,
     ChartTemplateURL:null,
     ChartType:null,
-    ChartDataSetName:null
+    ChartDataSetName:null,
+    ChartDataSetPath:null
   };
 
   //getters
@@ -36,6 +37,10 @@ angular.module('apacheZeppelinGsocApp').service('ChartMetaService', function() {
     return MetaModel.ChartDataSetName ;
   };
 
+    this.getChartDataSetPath = function() {
+    return MetaModel.ChartDataSetPath ;
+  };
+
   //setters
   this.setChartLib = function(ChartLib) {
     MetaModel.ChartLib = ChartLib ;
@@ -51,10 +56,11 @@ angular.module('apacheZeppelinGsocApp').service('ChartMetaService', function() {
 
   this.setChartDataSetName = function(ChartDataSetName) {
     MetaModel.ChartDataSetName = ChartDataSetName ;
+    MetaModel.ChartDataSetPath = 'data/' + ChartDataSetName + '.csv';
   };
 
- //looking for UI model logic
- this.isMetaCompleted = function() {
+  //looking for UI model logic
+  this.isMetaCompleted = function() {
     return MetaModel.ChartType !== null ;
   };
 

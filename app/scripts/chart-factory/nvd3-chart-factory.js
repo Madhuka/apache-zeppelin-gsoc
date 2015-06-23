@@ -1,5 +1,4 @@
 'use strict';
-
 /**
  * @ngdoc function
  * @name apacheZeppelinGsocApp.NVD3ChartFactory 
@@ -7,10 +6,12 @@
  * # Extending Gobal Chart Factory for NVD3 Chart Model
  *
  */
-
-angular.module('apacheZeppelinGsocApp').factory('NVD3ChartFactory', function(ChartFactory) {
-
-  var ChartList = {'Bar':'discreteBarChart','Line':'lineChart'};
+angular.module('apacheZeppelinGsocApp').factory('NVD3ChartFactory', function(
+  ChartFactory) {
+  var ChartList = {
+    'Bar': 'discreteBarChart',
+    'Line': 'lineChart'
+  };
   ////TO-DO Sample Data will remove after model set.
   var NVD3ChartChartModel = {
     options: {
@@ -18,12 +19,13 @@ angular.module('apacheZeppelinGsocApp').factory('NVD3ChartFactory', function(Cha
         type: 'discreteBarChart',
         height: 300,
         width: 500,
+        showLegend: true,
         margin: {
           top: 20,
           right: 20,
-          bottom: 60,
-          left: 55
-        },
+          bottom: 20,
+          left: 20
+        },        
         x: function(d) {
           return d.valuex;
         },
@@ -42,16 +44,16 @@ angular.module('apacheZeppelinGsocApp').factory('NVD3ChartFactory', function(Cha
       }
     },
     data: [{
-      values: [{
-        'label': '',
-        'value': 1,
-        'valuex': 0
-      }]
+      values: []
     }]
   };
 
   function getNVD3(error, rows) {
-    NVD3ChartChartModel.data[0].values = rows;
+    var data = [{
+      'values': rows
+    }];
+    NVD3ChartChartModel.data = data;
+    console.log(NVD3ChartChartModel.data);
   }
 
   function nvd3Model(d) {
@@ -65,35 +67,27 @@ angular.module('apacheZeppelinGsocApp').factory('NVD3ChartFactory', function(Cha
   function setChatTypeView(chartType) {
     NVD3ChartFactory.viewModel.options.chart.type = ChartList[chartType];
   }
-
   var NVD3Chart = {
     model: nvd3Model,
     get: getNVD3
   };
-
   //nvd3 chart
   var NVD3ChartFactory = new ChartFactory('NVD3Chart', NVD3Chart);
   NVD3ChartFactory.viewModel = NVD3ChartChartModel;
-
-
   NVD3ChartFactory.setChartType = function(chartType) {
     NVD3ChartFactory.type = chartType;
     setChatTypeView(chartType);
-
-    //loadYAxisLabel('car');
   };
-
   NVD3ChartFactory.setChartAxis = function(data) {
     loadYAxisLabel(data);
   };
-
-
   // define a new internal private method for this chart object
   var nvd3AxisLabels = {};
+
   function getNVD3Yaxis(error, rows) {
     console.log(rows);
     nvd3AxisLabels = rows;
-     NVD3ChartFactory.viewModel.options.chart.xAxis = {
+    NVD3ChartFactory.viewModel.options.chart.xAxis = {
       'axisLabel': 'Make',
       'tickFormat': function(d) {
         return nvd3AxisLabels[d];
@@ -108,7 +102,5 @@ angular.module('apacheZeppelinGsocApp').factory('NVD3ChartFactory', function(Cha
   function loadYAxisLabel(fileName) {
     nvd3AxisLabels = d3.csv(fileName).row(nvd3YaxisModel).get(getNVD3Yaxis);
   }
-
   return NVD3ChartFactory;
-
 });

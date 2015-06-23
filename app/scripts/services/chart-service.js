@@ -15,6 +15,7 @@ angular.module('apacheZeppelinGsocApp').service('ChartService', function(HighCha
   this.getHighChart = function(chartType) {
     var myChart = HighChartFactory;
     myChart.setChartType(chartType);
+    myChart.setChartAxis(ChartMetaService.getChartDataSetPath());
     return myChart;
   };
 

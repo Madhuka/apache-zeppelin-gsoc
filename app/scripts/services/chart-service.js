@@ -14,6 +14,7 @@ angular.module('apacheZeppelinGsocApp').service('ChartService', function($q, Hig
   /*using chart facotry*/
   this.getHighChart = function(chartType) {
     var myChart = HighChartFactory;
+    myChart.dataTransform();
     myChart.setChartType(chartType);
     myChart.setChartAxis(ChartMetaService.getChartDataSetPath());
     return myChart;
@@ -21,6 +22,7 @@ angular.module('apacheZeppelinGsocApp').service('ChartService', function($q, Hig
 
   this.getGoogleChart = function(chartType) {
     var myChart = GoogleChartFactory;
+    updateGoogleData();
     myChart.setChartType(chartType);
     return myChart;
   };
@@ -32,9 +34,15 @@ angular.module('apacheZeppelinGsocApp').service('ChartService', function($q, Hig
     return myChart;
   };
 
-    this.updateData = function() {
+  this.updateData = function() {
     var myChart = NVD3ChartFactory;
     myChart.setChartAxis(ChartMetaService.getChartDataSetPath());
+    myChart.dataTransform();
+    return myChart;
+  };
+
+  function updateGoogleData () {
+    var myChart = GoogleChartFactory;
     myChart.dataTransform();
     return myChart;
   };

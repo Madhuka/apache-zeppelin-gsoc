@@ -73,8 +73,11 @@ angular.module('apacheZeppelinGsocApp').controller('ChartCtrl', function($scope,
         vm.chartConfig = myNewChart.viewModel;
         break;
       case 'googleChart':
+        //ChartService.updateGoogleData();
         myNewChart = ChartService.getGoogleChart(myChartType);
         vm.chart = myNewChart.viewModel;
+        console.log('VM Level');
+        console.log(vm.chart.data.rows);
         break;
     }
     if (myNewChart.model) {

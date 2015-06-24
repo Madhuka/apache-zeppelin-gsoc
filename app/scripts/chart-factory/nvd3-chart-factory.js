@@ -62,7 +62,7 @@ angular.module('apacheZeppelinGsocApp').factory('NVD3ChartFactory', function(
     };
   }
 
-  function setChatTypeView(chartType) {
+  function setChartTypeView(chartType) {
     NVD3ChartFactory.viewModel.options.chart.type = ChartList[chartType];
   }
 
@@ -75,7 +75,7 @@ angular.module('apacheZeppelinGsocApp').factory('NVD3ChartFactory', function(
   NVD3ChartFactory.viewModel = NVD3ChartChartModel;
   NVD3ChartFactory.setChartType = function(chartType) {
     NVD3ChartFactory.type = chartType;
-    setChatTypeView(chartType);
+    setChartTypeView(chartType);
   };
   NVD3ChartFactory.setChartAxis = function(data) {
     loadYAxisLabel(data);

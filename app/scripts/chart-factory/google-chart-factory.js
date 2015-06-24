@@ -71,7 +71,7 @@ angular.module('apacheZeppelinGsocApp').factory('GoogleChartFactory', function(
     get: getGoogleChart
   };
 
-  function setChatTypeView(chartType) {
+  function setChartTypeView(chartType) {
     GoogleChartFactory.viewModel.type = ChartList[chartType];
   }
   //google chart
@@ -79,7 +79,7 @@ angular.module('apacheZeppelinGsocApp').factory('GoogleChartFactory', function(
   GoogleChartFactory.viewModel = GoogelChartChartModel;
   GoogleChartFactory.setChartType = function(chartType) {
     GoogleChartFactory.type = chartType;
-    setChatTypeView(chartType);
+    setChartTypeView(chartType);
   };
   // define a new internal private method for this chart object
   function setChartAxis() {}

@@ -6,8 +6,7 @@
  * # Extending Gobal Chart Factory for NVD3 Chart Model
  *
  */
-angular.module('apacheZeppelinGsocApp').factory('NVD3ChartFactory', function(
-  ChartFactory) {
+angular.module('apacheZeppelinGsocApp').factory('NVD3ChartFactory', function(ChartMetaService, ChartFactory) {
   var ChartList = {
     'Bar': 'discreteBarChart',
     'Line': 'lineChart'
@@ -78,6 +77,9 @@ angular.module('apacheZeppelinGsocApp').factory('NVD3ChartFactory', function(
   };
   NVD3ChartFactory.setChartAxis = function(data) {
     loadYAxisLabel(data);
+  };
+  NVD3ChartFactory.dataTransform = function() {
+    ChartMetaService.getChartData().row(NVD3Chart.model).get(NVD3Chart.get);
   };
   // define a new internal private method for this chart object
   var nvd3AxisLabels = {};

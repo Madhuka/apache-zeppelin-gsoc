@@ -9,7 +9,7 @@
  */
 
 
-angular.module('apacheZeppelinGsocApp').service('ChartService', function(HighChartFactory, GoogleChartFactory, NVD3ChartFactory,ChartMetaService) {
+angular.module('apacheZeppelinGsocApp').service('ChartService', function($q, HighChartFactory, GoogleChartFactory, NVD3ChartFactory,ChartMetaService) {
 
   /*using chart facotry*/
   this.getHighChart = function(chartType) {
@@ -29,6 +29,13 @@ angular.module('apacheZeppelinGsocApp').service('ChartService', function(HighCha
     var myChart = NVD3ChartFactory;
     myChart.setChartType(chartType);
     myChart.setChartAxis(ChartMetaService.getChartDataSetPath());
+    return myChart;
+  };
+
+    this.updateData = function() {
+    var myChart = NVD3ChartFactory;
+    myChart.setChartAxis(ChartMetaService.getChartDataSetPath());
+    myChart.dataTransform();
     return myChart;
   };
 

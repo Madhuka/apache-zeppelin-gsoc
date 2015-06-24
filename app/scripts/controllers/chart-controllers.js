@@ -59,10 +59,14 @@ angular.module('apacheZeppelinGsocApp').controller('ChartCtrl', function($scope,
     switch (ChartMetaService.getChartLib()) {
       case 'NVD3Chart':
         //set data for NVD3
-        myNewChart = ChartService.getNVD3Chart(myChartType);
         ChartService.updateData();
+        myNewChart = ChartService.getNVD3Chart(myChartType);
+        //only for nvd3 for fixing the bug
         vm.data = myNewChart.viewModel.data;
         vm.options = myNewChart.viewModel.options;
+        console.log('VM Level');
+        console.log(vm.data);
+        console.log(myNewChart.viewModel.data);
         break;
       case 'highChart':
         myNewChart = ChartService.getHighChart(myChartType);
@@ -74,7 +78,7 @@ angular.module('apacheZeppelinGsocApp').controller('ChartCtrl', function($scope,
         break;
     }
     if (myNewChart.model) {
-      renderChart(myNewChart.model, data);
+      //renderChart(myNewChart.model, data);
     }
     //NVD3 axis update
   }

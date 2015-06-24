@@ -12,7 +12,7 @@ angular.module('apacheZeppelinGsocApp').factory('NVD3ChartFactory', function(
     'Bar': 'discreteBarChart',
     'Line': 'lineChart'
   };
-  ////TO-DO Sample Data will remove after model set.
+  //NVD3 Chart model
   var NVD3ChartChartModel = {
     options: {
       chart: {
@@ -43,16 +43,14 @@ angular.module('apacheZeppelinGsocApp').factory('NVD3ChartFactory', function(
         }
       }
     },
-    data: [{
-      values: []
-    }]
+    data: []
   };
 
   function getNVD3(error, rows) {
-    var data = [{
+    var data = {
       'values': rows
-    }];
-    NVD3ChartChartModel.data = data;
+    };
+    NVD3ChartChartModel.data[0] = data;
     console.log(NVD3ChartChartModel.data);
   }
 
@@ -67,6 +65,7 @@ angular.module('apacheZeppelinGsocApp').factory('NVD3ChartFactory', function(
   function setChatTypeView(chartType) {
     NVD3ChartFactory.viewModel.options.chart.type = ChartList[chartType];
   }
+
   var NVD3Chart = {
     model: nvd3Model,
     get: getNVD3

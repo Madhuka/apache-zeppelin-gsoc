@@ -12,11 +12,11 @@
 angular.module('apacheZeppelinGsocApp')
   .constant('chartConfig', {
     'libraryName': [{
-      'library': 'NVD3Chart',
-      'template': 'views/charts/nvd3chart.html'
-    }, {
       'library': 'highChart',
       'template': 'views/charts/highchart.html'
+    }, {
+      'library': 'NVD3Chart',
+      'template': 'views/charts/nvd3chart.html'
     }, {
       'library': 'googleChart',
       'template': 'views/charts/googlechart.html'

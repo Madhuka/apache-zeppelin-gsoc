@@ -19,15 +19,14 @@ angular.module('apacheZeppelinGsocApp').factory('GoogleChartFactory', function(
     cssStyle: 'height:400px; width:500px;',
     data: {
       'cols': [{
-          id: 'pizza',
-          label: 'Pizza',
-          type: 'string'
-        }, {
-          id: 'populartiy',
-          label: 'Populartiy',
-          type: 'number'
-        }
-      ],
+        id: 'pizza',
+        label: 'Pizza',
+        type: 'string'
+      }, {
+        id: 'populartiy',
+        label: 'Populartiy',
+        type: 'number'
+      }],
       'rows': [{
         c: [{
           v: 'Pepperoni'

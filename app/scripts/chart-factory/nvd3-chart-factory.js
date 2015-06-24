@@ -25,7 +25,7 @@ angular.module('apacheZeppelinGsocApp').factory('NVD3ChartFactory', function(
           right: 20,
           bottom: 20,
           left: 20
-        },        
+        },
         x: function(d) {
           return d.valuex;
         },
@@ -65,7 +65,6 @@ angular.module('apacheZeppelinGsocApp').factory('NVD3ChartFactory', function(
   function setChartTypeView(chartType) {
     NVD3ChartFactory.viewModel.options.chart.type = ChartList[chartType];
   }
-
   var NVD3Chart = {
     model: nvd3Model,
     get: getNVD3

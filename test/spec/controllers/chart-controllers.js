@@ -46,5 +46,9 @@ describe('Controller: ChartCtrl', function() {
     expect(ChartCtrl.isButtonActive('dataButton','car')).toBe(false);
   });
 
+  it('Get ChartTemplate URL testing', function() {
+    expect(ChartCtrl.getChartTemplateURL).toBeDefined();
+    expect(ChartCtrl.getChartTemplateURL instanceof Function).toBe(true);
+  });
 });
 

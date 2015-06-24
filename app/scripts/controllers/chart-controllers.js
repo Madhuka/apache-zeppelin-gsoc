@@ -11,8 +11,7 @@
 angular.module('apacheZeppelinGsocApp').controller('ChartCtrl', function($scope,
   ChartFactory, GoogleChartFactory, HighChartFactory, NVD3ChartFactory,
   ChartService, ChartMetaService, chartConfig) {
-  var vm = this,
-    varmyChart = {};
+  var vm = this;
   //loading from chart config file.
   var libraryName = chartConfig.libraryName;
   var files = chartConfig.dataFiles;
@@ -41,7 +40,7 @@ angular.module('apacheZeppelinGsocApp').controller('ChartCtrl', function($scope,
     drawChart(data);
   }
 
-  function getChartTemplateURL(libraryIndex) {
+  function getChartTemplateURL() {
     return ChartMetaService.getChartTemplateURL();
   }
 

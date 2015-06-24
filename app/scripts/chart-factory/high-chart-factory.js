@@ -76,7 +76,6 @@ angular.module('apacheZeppelinGsocApp').factory('HighChartFactory', function(
   }
 
   function loadYAxisLabel(fileName) {
-    console.log(fileName)
     highAxisLabels = d3.csv(fileName).row(highYaxisModel).get(getHighYaxis);
   }
   return HighChartFactory;

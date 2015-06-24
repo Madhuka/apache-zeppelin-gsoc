@@ -13,7 +13,7 @@ angular
   .module('apacheZeppelinGsocApp', [
     'ngResource',
     'ngRoute',
-	  'googlechart',
+    'googlechart',
     'highcharts-ng',
     'nvd3'
   ])
@@ -26,7 +26,7 @@ angular
         templateUrl: 'views/milestone01.html',
         controller:'ChartCtrl'
       })
-	    .when('/contact', {
+      .when('/contact', {
         templateUrl: 'views/contact.html'
       })
       .when('/', {

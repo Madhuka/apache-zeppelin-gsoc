@@ -1,5 +1,4 @@
 'use strict';
-
 /**
  * @ngdoc function
  * @name apacheZeppelinGsocApp.configure
@@ -8,7 +7,6 @@
  *
  * @author madhuka udantha
  */
-
 angular.module('apacheZeppelinGsocApp')
   .constant('chartConfig', {
     'libraryName': [{

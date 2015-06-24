@@ -5,8 +5,7 @@ describe('Controller: NavCtrl', function() {
   // load the controller's module
   beforeEach(module('apacheZeppelinGsocApp'));
 
-  var NavCtrl,
-    scope;
+  var NavCtrl, scope;
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function($controller, $rootScope) {
@@ -30,4 +29,5 @@ describe('Controller: NavCtrl', function() {
     expect(NavCtrl.isActive('home')).toBe(false);
     expect(NavCtrl.isActive('')).toBe(true);
   });
+
 });

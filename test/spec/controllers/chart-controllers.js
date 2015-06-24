@@ -12,8 +12,7 @@ describe('Controller: ChartCtrl', function() {
   // load the controller's module
   beforeEach(module('apacheZeppelinGsocApp'));
 
-  var ChartCtrl,
-    scope;
+  var ChartCtrl, scope;
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function($controller, $rootScope) {
@@ -31,28 +30,25 @@ describe('Controller: ChartCtrl', function() {
     expect(ChartCtrl.vm).toBeUndefined();
   });
 
-/*
-//ChartCtrl scope is not solve for test
   it('Chart Controller Option should to be defined', function() {   
     expect(ChartCtrl.loadData).toBeDefined();
     expect(ChartCtrl.loadChartLibrary).toBeDefined();
   });
-  
 
   it('Chart Controller Button functions should to be defined', function() {
     expect(ChartCtrl.isButtonActive).toBeDefined();
     expect(ChartCtrl.isButtonSelected).toBeDefined();
   });
 
-  
-
   it('Button Group function testing', function() {
     expect(ChartCtrl.isButtonActive instanceof Function).toBe(true);
-     expect(ChartCtrl.isButtonSelected instanceof Function).toBe(true);
-     expect(ChartCtrl.isActive('dataButton')).toBe(false);
-     ChartCtrl.isButtonActive('dataButton','car');
-    expect(ChartCtrl.isActive('dataButton')).toBe(true);
-  }); 
-*/
+    expect(ChartCtrl.isButtonSelected instanceof Function).toBe(true);
+    expect(ChartCtrl.isButtonActive('dataButton','car')).toBe(false);
+  });
+
+  it('Get ChartTemplate URL testing', function() {
+    expect(ChartCtrl.getChartTemplateURL).toBeDefined();
+    expect(ChartCtrl.getChartTemplateURL instanceof Function).toBe(true);
+  });
 });
 

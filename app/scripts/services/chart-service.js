@@ -9,12 +9,13 @@
  */
 
 
-angular.module('apacheZeppelinGsocApp').service('ChartService', function(HighChartFactory, GoogleChartFactory, NVD3ChartFactory) {
+angular.module('apacheZeppelinGsocApp').service('ChartService', function(HighChartFactory, GoogleChartFactory, NVD3ChartFactory,ChartMetaService) {
 
   /*using chart facotry*/
   this.getHighChart = function(chartType) {
     var myChart = HighChartFactory;
     myChart.setChartType(chartType);
+    myChart.setChartAxis(ChartMetaService.getChartDataSetPath());
     return myChart;
   };
 
@@ -27,6 +28,7 @@ angular.module('apacheZeppelinGsocApp').service('ChartService', function(HighCha
   this.getNVD3Chart = function(chartType) {
     var myChart = NVD3ChartFactory;
     myChart.setChartType(chartType);
+    myChart.setChartAxis(ChartMetaService.getChartDataSetPath());
     return myChart;
   };
 

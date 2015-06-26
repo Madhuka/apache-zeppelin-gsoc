@@ -19,5 +19,5 @@ node="node/node"
 if hash "node" 2>/dev/null ; then
   node="node"
 fi
-"$node" "./node_modules/.bin/grunt" "$@"
+"${node}" "./node_modules/.bin/grunt" "$@"
 

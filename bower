@@ -14,4 +14,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-"node/node" "./node_modules/bower/bin/bower" "$@"
+node="node/node"
+
+if hash "node" 2>/dev/null ; then
+  node="node"
+fi
+"${node}" "./node_modules/bower/bin/bower" "$@"

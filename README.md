@@ -5,9 +5,10 @@ Zeppelin is a collaborative data analytic and visualization tool for distributed
 1. NodeJS with npm
 2. Bower
 
-You can used 
- * bower install 
- * npm install
+Run
+ * `npm install` first
+ * `bower install` then
+
 This will Download all the dependencies including node js and npm
 
 ### Build the application

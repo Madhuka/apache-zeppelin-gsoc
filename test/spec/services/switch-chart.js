@@ -6,7 +6,11 @@ describe("apacheZeppelinGsocApp chartService", function() {
     chartService = ChartService;
   }));
   describe("Google Chart", function() {
-    it("Google Chart Type Switching", function() {
+    var googleChart;
+    beforeEach(function() {
+      googleChart = chartService.getGoogleChart('Bar');
+    });
+    it("switching chart type ", function() {
       expect(chartService).toBeDefined();
       expect(chartService.getHighChart()).toBeDefined();
       expect(chartService.getGoogleChart('Bar').libname).toBe(
@@ -15,17 +19,15 @@ describe("apacheZeppelinGsocApp chartService", function() {
         'BarChart');
       expect(chartService.getGoogleChart('Line').viewModel.type).toBe(
         'LineChart');
-      expect(chartService.getGoogleChart('Bar').viewModel.type).toBe(
-        'BarChart');
     });
-    it("testing the Google Chart View.Model", function() {
-      expect(chartService.getGoogleChart('Line').viewModel.data instanceof Object)
+    it("testing Chart view model", function() {
+      expect(googleChart.viewModel.data instanceof Object)
         .toBe(true);
-      expect(chartService.getGoogleChart('Line').viewModel.cssStyle)
+      expect(googleChart.viewModel.cssStyle)
         .toBe('height:400px; width:500px;');
-      expect(chartService.getGoogleChart('Line').viewModel.options instanceof Object)
+      expect(googleChart.viewModel.options instanceof Object)
         .toBe(true);
-      expect(chartService.getGoogleChart('Line').viewModel.options.displayExactValues)
+      expect(googleChart.viewModel.options.displayExactValues)
         .toBe(true);
     });
   });
@@ -36,7 +38,7 @@ describe("apacheZeppelinGsocApp chartService", function() {
       myHighChart = chartService.getHighChart('Line');
       myHighChart.viewModel.xAxis.categories = categories;
     });
-    it("High Chart Type Switching", function() {
+    it("Switching chart type", function() {
       expect(chartService.getHighChart('Line').libname).toBe(
         'highxChart');
       expect(myHighChart.viewModel.options.chart.type).toBe(
@@ -52,7 +54,7 @@ describe("apacheZeppelinGsocApp chartService", function() {
       expect(chartService.getHighChart('Bar').type).toBe(
         'Bar');
     });
-    it("testing the High Chart View.Model", function() {
+    it("testing the chart view model", function() {
       expect(chartService.getHighChart('Line').viewModel.data instanceof Object)
         .toBe(false);
       expect(chartService.getHighChart('Line').viewModel.size instanceof Object)
@@ -62,7 +64,7 @@ describe("apacheZeppelinGsocApp chartService", function() {
       expect(chartService.getHighChart('Line').viewModel.size.height)
         .toBe(300);
     });
-    it("testing the High Chart changing the xAxis.categories", function() {
+    it("testing the Chart changing the xAxis.categories", function() {
       expect(myHighChart.viewModel.xAxis.categories instanceof Array)
         .toBe(true);
       expect(myHighChart.viewModel.xAxis.categories).toEqual(
@@ -78,7 +80,7 @@ describe("apacheZeppelinGsocApp chartService", function() {
       myNVD3Chart = chartService.getNVD3Chart('Line');
       myNVD3Chart.viewModel.data = [1, 2];
     });
-    it("Testing NVD3Chart Data Transform", function() {
+    it("testing transforming data ", function() {
       expect(chartService.getNVD3Chart('Bar').libname).toBe(
         'NVD3Chart');
       expect(myNVD3Chart.type).toBe('Bar');
@@ -86,7 +88,7 @@ describe("apacheZeppelinGsocApp chartService", function() {
       myNVD3Chart.viewModel.data = data;
       expect(myNVD3Chart.viewModel.data).toEqual(data);
     });
-    it("Testing NVD3Chart Chart Type Transform", function() {
+    it("transforming chart tType", function() {
       expect(chartService.getNVD3Chart('Line').viewModel.options.chart
         .type).toBe(
         'lineChart');

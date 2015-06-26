@@ -38,7 +38,7 @@ angular.module('apacheZeppelinGsocApp').factory('GoogleChartFactory', function(
     options: {
       'isStacked': 'true',
       'fill': 20,
-      'height': 300,
+      'height': 400,
       'displayExactValues': true,
       'vAxis': {
         'gridlines': {

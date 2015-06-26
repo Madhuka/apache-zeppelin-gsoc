@@ -36,12 +36,19 @@ describe("apacheZeppelinGsocApp GoogleChartFactory", function() {
       //changing the mockchart type
       myChart.setChartType('Bar');
       expect(myChart.type).toBe('Bar');
+      expect(myChart.viewModel.type).toBe('BarChart');
     });
   });
   describe("view model", function() {
     it("testing for attributes", function() {
       expect(myChart.viewModel.options).toBeDefined();
-      //to-Do more Testing
+      expect(myChart.viewModel.type).toBeDefined();
+      expect(myChart.viewModel.cssStyle).toBeDefined();
+      expect(myChart.viewModel.data).toBeDefined();
+      expect(myChart.viewModel.formatters).toBeDefined();
+    });
+    it("testing for deafults vales of attributes", function() {
+      expect(myChart.viewModel.options.height).toBe(300);
     });
   });
 });

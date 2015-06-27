@@ -14,6 +14,9 @@ describe("apacheZeppelinGsocApp HighChartFactory", function() {
       expect(myChart).toBeDefined();
     });
   });
+  it(" to be define", function() {
+    expect(myChart.libname).toBe('highxChart');
+  });
   describe("Model", function() {
     //testing high chart is built in Genric chart model
     it("must extend the Genric Chart Model from ChartFactory", function() {
@@ -36,12 +39,25 @@ describe("apacheZeppelinGsocApp HighChartFactory", function() {
       //changing the mockchart type
       myChart.setChartType('Bar');
       expect(myChart.type).toBe('Bar');
+      expect(myChart.viewModel.options.chart.type).toBe('bar');
+    });
+    it("testing setChartAxis", function() {
+      myChart.setChartAxis('testData');
+      expect(myChart.viewModel.options.chart.type).toBe('line');
+      expect(myChart.viewModel.xAxis.categories).toEqual([]);
     });
   });
   describe("view model", function() {
     it("testing for attributes", function() {
-      expect(myChart.viewModel).toBeDefined();
-      //to-Do more Testing
+      expect(myChart.viewModel.size).toBeDefined();
+      expect(myChart.viewModel.size.width).toBe(500);
+      expect(myChart.viewModel.size.height).toBe(300);
+      expect(myChart.viewModel.series).toBeDefined();
+      expect(myChart.viewModel.xAxis).toBeDefined();
+    });
+    it("testing for series and xAxis", function() {
+      expect(myChart.viewModel.series[0].data).toBeDefined();
+      expect(myChart.viewModel.xAxis.categories).toBeDefined();
     });
   });
 });

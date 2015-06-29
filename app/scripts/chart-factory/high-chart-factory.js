@@ -6,8 +6,7 @@
  * # Extending Gobal Chart Factory for High Chart Model
  *
  */
-angular.module('apacheZeppelinGsocApp').factory('HighChartFactory', function(
-  ChartFactory) {
+angular.module('apacheZeppelinGsocApp').factory('HighChartFactory', function(ChartMetaService, ChartFactory) {
   var ChartList = {
     'Bar': 'bar',
     'Line': 'line'
@@ -62,6 +61,9 @@ angular.module('apacheZeppelinGsocApp').factory('HighChartFactory', function(
   };
   HighChartFactory.setChartAxis = function(data) {
     loadYAxisLabel(data);
+  };
+  HighChartFactory.dataTransform = function() {
+    ChartMetaService.getChartData().row(highxChart.model).get(highxChart.get);
   };
   var highAxisLabels = {};
 

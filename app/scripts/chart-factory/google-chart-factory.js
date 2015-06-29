@@ -6,21 +6,21 @@
  * # Extending Gobal Chart Factory for Google Chart Model
  *
  */
-angular.module('apacheZeppelinGsocApp').factory('GoogleChartFactory', function(
-  ChartFactory) {
+angular.module('apacheZeppelinGsocApp').factory('GoogleChartFactory', function(ChartMetaService, ChartFactory) {
   var ChartList = {
     'Bar': 'BarChart',
     'Line': 'LineChart'
   };
   //googleChart model (sample chart data model)
-  //TO-DO Sample Data will remove after model set.
+  //TO-DO Sample Data will remove after model set 
+  //Question tobe ask, As data model from CSV is not support data types so need cols
   var GoogelChartChartModel = {
     type: 'BarChart',
     cssStyle: 'height:400px; width:500px;',
     data: {
       'cols': [{
-        id: 'pizza',
-        label: 'Pizza',
+        id: 'mtot',
+        label: 'motor',
         type: 'string'
       }, {
         id: 'populartiy',
@@ -79,6 +79,9 @@ angular.module('apacheZeppelinGsocApp').factory('GoogleChartFactory', function(
   GoogleChartFactory.setChartType = function(chartType) {
     GoogleChartFactory.type = chartType;
     setChartTypeView(chartType);
+  };
+  GoogleChartFactory.dataTransform = function() {
+    ChartMetaService.getChartData().row(googlexChart.model).get(googlexChart.get);
   };
   // define a new internal private method for this chart object
   function setChartAxis() {}

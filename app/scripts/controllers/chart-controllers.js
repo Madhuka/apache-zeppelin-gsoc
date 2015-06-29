@@ -60,12 +60,11 @@ angular.module('apacheZeppelinGsocApp').controller('ChartCtrl', function($scope,
       case 'NVD3Chart':
         //set data for NVD3
         myNewChart = ChartService.getNVD3Chart(myChartType);
-        vm.data = myNewChart.viewModel.data;
-        vm.options = myNewChart.viewModel.options;
+        vm.chart = myNewChart.viewModel;
         break;
       case 'highChart':
         myNewChart = ChartService.getHighChart(myChartType);
-        vm.chartConfig = myNewChart.viewModel;
+        vm.chart = myNewChart.viewModel;
         break;
       case 'googleChart':
         myNewChart = ChartService.getGoogleChart(myChartType);

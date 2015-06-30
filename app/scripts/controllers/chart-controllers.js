@@ -73,7 +73,7 @@ angular.module('apacheZeppelinGsocApp').controller('ChartCtrl', function($scope,
   var active = {
     'dataButton': false,
     'chartLibraryButton': false,
-    'chartTypeButton': false
+    'chartTypeButton': 'Bar'
   };
 
   function setButtonActive(set, type) {

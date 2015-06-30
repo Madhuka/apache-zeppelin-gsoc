@@ -9,22 +9,22 @@
 angular.module('apacheZeppelinGsocApp').factory('NVD3ChartFactory', function(
   ChartFactory) {
   var ChartList = {
-    'Bar': 'discreteBarChart',
+    'Bar': 'multiBarHorizontalChart',
     'Line': 'lineChart'
   };
   //NVD3 Chart model
   var NVD3ChartChartModel = {
     options: {
       chart: {
-        type: 'discreteBarChart',
+        type: 'multiBarHorizontalChart',
         height: 300,
         width: 500,
         showLegend: true,
         margin: {
           top: 20,
-          right: 20,
+          right: 30,
           bottom: 20,
-          left: 20
+          left: 70
         },
         x: function(d) {
           return d.valuex;
@@ -86,7 +86,7 @@ angular.module('apacheZeppelinGsocApp').factory('NVD3ChartFactory', function(
     console.log(rows);
     nvd3AxisLabels = rows;
     NVD3ChartFactory.viewModel.options.chart.xAxis = {
-      'axisLabel': 'Make',
+       //'axisLabel': 'Make',
       'tickFormat': function(d) {
         return nvd3AxisLabels[d];
       }

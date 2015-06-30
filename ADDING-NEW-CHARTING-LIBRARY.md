@@ -8,7 +8,7 @@ Need to add new JS charting library for the project or application.
 
 This command update your bower.json and index html
 
-##Steps 
+##Steps to be followed
 1. Create a new factory inside the **chart-factory** with extending Global Chart Factory.
 
 ```javascript
@@ -21,14 +21,14 @@ angular.module('apacheZeppelinGsocApp').factory('MyNewChartFactory', function(
   //To-Do Implement or add new chart 
 });
 ```
-1.1. Supporting chart types need to define in ChartList array as below
+  1.1. Supporting chart types need to define in ChartList array as below
 ```javascript
 var ChartList = {
   'Bar': 'BarChart',
   'Line': 'LineChart'
 };
 ```
-1.2. Develop the rest of method you need from you charting library
+  1.2. Develop the rest of method you need from you charting library
 
 2. Factories are expose from **ChartService**. Therefore you can add new services (only one method) that is using new factory.
 
@@ -47,8 +47,9 @@ var ChartList = {
   'service': 'getHighChart',
   'template': 'views/charts/highchart.html'
 ```
+Make sure you add you test cases and unit test for new chart library factory. 
 
-Run
+##Build, Test and Run
  * `npm install` first, If you hav not run it before.
  * `bower install` will download new library for application.
 

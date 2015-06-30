@@ -4,6 +4,7 @@
  * @name apacheZeppelinGsocApp.HighChartFactory 
  * @description
  * # Extending Gobal Chart Factory for High Chart Model
+ *You can find high chart api in http://api.highcharts.com/highcharts#exporting
  *
  */
 angular.module('apacheZeppelinGsocApp').factory('HighChartFactory', function(
@@ -15,14 +16,29 @@ angular.module('apacheZeppelinGsocApp').factory('HighChartFactory', function(
   //highChart model
   var HighChartChartModel = {
     options: {
+      exporting: {
+        enabled: false
+      },
       chart: {
         type: 'bar'
       }
+    },
+    title: {
+      text:''
+    },
+    subtitle: {
+      text:''
+    },
+    credits: {
+      enabled:false
+    },
+    legend:{
     },
     xAxis: {
       categories: []
     },
     series: [{
+      name: 'populartiy',
       data: []
     }],
     size: {

@@ -54,8 +54,8 @@ angular.module('apacheZeppelinGsocApp').factory('HighChartFactory', function(
   }
 
   function getHighChart(error, rows) {
-    console.log('loading for view');
-    console.log(rows);
+    //console.log('loading for view');
+    //console.log(rows);
     HighChartChartModel.series[0].data = rows;
   }
 
@@ -82,7 +82,7 @@ angular.module('apacheZeppelinGsocApp').factory('HighChartFactory', function(
   var highAxisLabels = {};
 
   function getHighYaxis(error, rows) {
-    console.log(rows);
+    //console.log(rows);
     highAxisLabels = rows;
     HighChartFactory.viewModel.xAxis.categories = highAxisLabels;
   }

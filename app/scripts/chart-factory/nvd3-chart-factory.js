@@ -51,7 +51,7 @@ angular.module('apacheZeppelinGsocApp').factory('NVD3ChartFactory', function(
       'values': rows
     };
     NVD3ChartChartModel.data[0] = data;
-    console.log(NVD3ChartChartModel.data);
+    //console.log(NVD3ChartChartModel.data);
   }
 
   function nvd3Model(d) {
@@ -83,7 +83,7 @@ angular.module('apacheZeppelinGsocApp').factory('NVD3ChartFactory', function(
   var nvd3AxisLabels = {};
 
   function getNVD3Yaxis(error, rows) {
-    console.log(rows);
+    //console.log(rows);
     nvd3AxisLabels = rows;
     NVD3ChartFactory.viewModel.options.chart.xAxis = {
        //'axisLabel': 'Make',

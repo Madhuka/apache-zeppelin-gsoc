@@ -39,7 +39,7 @@ describe("apacheZeppelinGsocApp NVD3ChartFactory", function() {
       //changing the mock chart type
       myChart.setChartType('Bar');
       expect(myChart.type).toBe('Bar');
-      expect(myChart.viewModel.options.chart.type).toBe('discreteBarChart');
+      expect(myChart.viewModel.options.chart.type).toBe('multiBarHorizontalChart');
     });
   });
   describe("view model", function() {

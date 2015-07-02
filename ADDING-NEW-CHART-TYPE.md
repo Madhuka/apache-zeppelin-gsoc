@@ -20,6 +20,8 @@ var ChartList = {
 ```
 Make sure you add same key for `ChartList` in chart library factory.
 
+#### If chart Data Model is considerable different (Need to introduce new model for chart), If there is a huge differnt you can extend the factory (In Sub Library model)
+
 ##Build, Test and Run
  * `npm install` first, If you hav not run it before.
  * `bower install` will download new library for application.

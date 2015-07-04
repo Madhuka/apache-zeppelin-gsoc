@@ -10,7 +10,8 @@ angular.module('apacheZeppelinGsocApp').factory('NVD3ChartFactory', function(
   ChartFactory) {
   var ChartList = {
     'Bar': 'multiBarHorizontalChart',
-    'Line': 'lineChart'
+    'Line': 'lineChart',
+    'Area': 'stackedAreaChart'
   };
   //NVD3 Chart model
   var NVD3ChartChartModel = {

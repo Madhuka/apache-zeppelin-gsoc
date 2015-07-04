@@ -11,7 +11,8 @@ angular.module('apacheZeppelinGsocApp').factory('HighChartFactory', function(
   ChartFactory) {
   var ChartList = {
     'Bar': 'bar',
-    'Line': 'line'
+    'Line': 'line',
+    'Area': 'area'
   };
   //highChart model
   var HighChartChartModel = {

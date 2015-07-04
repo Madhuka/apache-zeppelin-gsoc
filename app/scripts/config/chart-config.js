@@ -23,5 +23,5 @@ angular.module('apacheZeppelinGsocApp')
       'template': 'views/charts/googlechart.html'
     }],
     'dataFiles': ['car', 'bike'],
-    'chartTypes': ['Line', 'Bar']
+    'chartTypes': ['Line', 'Bar','Area']
   });

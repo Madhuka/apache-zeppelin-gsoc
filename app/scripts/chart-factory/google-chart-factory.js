@@ -10,7 +10,8 @@ angular.module('apacheZeppelinGsocApp').factory('GoogleChartFactory', function(
   ChartFactory) {
   var ChartList = {
     'Bar': 'BarChart',
-    'Line': 'LineChart'
+    'Line': 'LineChart',
+    'Area': 'AreaChart'
   };
   //googleChart model (sample chart data model)
   //TO-DO Sample Data will remove after model set.
@@ -82,5 +83,6 @@ angular.module('apacheZeppelinGsocApp').factory('GoogleChartFactory', function(
   };
   // define a new internal private method for this chart object
   function setChartAxis() {}
+
   return GoogleChartFactory;
 });

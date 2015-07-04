@@ -27,5 +27,27 @@ describe("apacheZeppelinGsocApp UseCase Testing", function() {
       newchart = nvd3chart;
       expect(newchart.libname).toBe('NVD3Chart');
     });
+    it("HighChart Bar to Google Line chart", function() {
+      var newchart = highChart;
+      expect(newchart.viewModel.options.chart.type).toBe('bar');
+      newchart = myChart;
+      newchart.setChartType('Line');
+      expect(newchart.viewModel.type).toBe('LineChart');
+    });
+    it("HighChart Line to Google Bar chart", function() {
+      var newchart = highChart;
+      newchart.setChartType('Line');
+      expect(newchart.viewModel.options.chart.type).toBe('line');
+      newchart = myChart;
+      newchart.setChartType('Bar');
+      expect(newchart.viewModel.type).toBe('BarChart');
+    });
+    it("NVD3 Bar to Google Line chart", function() {
+      var newchart = nvd3chart;
+      expect(newchart.viewModel.options.chart.type).toBe('multiBarHorizontalChart');
+      newchart = myChart;
+      newchart.setChartType('Line');
+      expect(newchart.viewModel.type).toBe('LineChart');
+    });
   });
 });

@@ -94,7 +94,7 @@ describe("apacheZeppelinGsocApp chartService", function() {
         'lineChart');
       expect(chartService.getNVD3Chart('Bar').viewModel.options.chart
         .type).toBe(
-        'discreteBarChart');
+        'multiBarHorizontalChart');
       expect(chartService.getNVD3Chart('Bar').type).toBe(
         'Bar');
     });

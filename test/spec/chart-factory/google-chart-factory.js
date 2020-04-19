@@ -13,6 +13,9 @@ describe("apacheZeppelinGsocApp GoogleChartFactory", function() {
     it(" to be define", function() {
       expect(myChart).toBeDefined();
     });
+    it(" using google chart library", function() {
+      expect(myChart.libname).toBe('googleChart');
+    });
   });
   describe("Model", function() {
     //testing Google chart is built in Genric chart model
@@ -36,12 +39,30 @@ describe("apacheZeppelinGsocApp GoogleChartFactory", function() {
       //changing the mockchart type
       myChart.setChartType('Bar');
       expect(myChart.type).toBe('Bar');
+      expect(myChart.viewModel.type).toBe('BarChart');
     });
   });
   describe("view model", function() {
     it("testing for attributes", function() {
       expect(myChart.viewModel.options).toBeDefined();
-      //to-Do more Testing
+      expect(myChart.viewModel.type).toBeDefined();
+      expect(myChart.viewModel.cssStyle).toBeDefined();
+      expect(myChart.viewModel.data).toBeDefined();
+      expect(myChart.viewModel.formatters).toBeDefined();
+    });
+    it("testing for deafults vales of attributes", function() {
+      expect(myChart.viewModel.options.height).toBe(400);
+      expect(myChart.viewModel.options.displayExactValues).toBe(
+        true);
+      expect(myChart.viewModel.options.fill).toBe(20);
+    });
+    it("testing for axis", function() {
+      expect(myChart.viewModel.options.vAxis).toBeDefined();
+      expect(myChart.viewModel.options.hAxis).toBeDefined();
+      expect(myChart.viewModel.options.vAxis instanceof Object).toBe(
+        true);
+      expect(myChart.viewModel.options.hAxis instanceof Object).toBe(
+        true);
     });
   });
 });

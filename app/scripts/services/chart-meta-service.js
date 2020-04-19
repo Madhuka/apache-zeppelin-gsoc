@@ -11,6 +11,7 @@ angular.module('apacheZeppelinGsocApp').service('ChartMetaService', function() {
   var MetaModel = {
     ChartLib: null,
     ChartTemplateURL: null,
+    ChartService: null,
     ChartType: null,
     ChartDataSetName: null,
     ChartDataSetPath: null,
@@ -25,6 +26,9 @@ angular.module('apacheZeppelinGsocApp').service('ChartMetaService', function() {
   };
   this.getChartTemplateURL = function() {
     return MetaModel.ChartTemplateURL;
+  };
+  this.getChartService = function() {
+    return MetaModel.ChartService;
   };
   this.getChartDataSetName = function() {
     return MetaModel.ChartDataSetName;
@@ -44,6 +48,9 @@ angular.module('apacheZeppelinGsocApp').service('ChartMetaService', function() {
   };
   this.setChartTemplateURL = function(ChartTemplateURL) {
     MetaModel.ChartTemplateURL = ChartTemplateURL;
+  };
+  this.setChartService = function(ChartService) {
+    MetaModel.ChartService = ChartService;
   };
   this.setChartDataSetName = function(ChartDataSetName) {
     MetaModel.ChartDataSetName = ChartDataSetName;

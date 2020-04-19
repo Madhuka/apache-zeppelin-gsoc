@@ -33,6 +33,7 @@ angular.module('apacheZeppelinGsocApp').controller('ChartCtrl', function($scope,
     setButtonActive('chartLibraryButton', libraryName[libraryIndex].library);
     ChartMetaService.setChartLib(libraryName[libraryIndex].library);
     ChartMetaService.setChartTemplateURL(libraryName[libraryIndex].template);
+    ChartMetaService.setChartService(libraryName[libraryIndex].service);
     if (ChartMetaService.getChartType() === null) {
       //setting default chart type
       ChartMetaService.setChartType('Bar');
@@ -55,27 +56,14 @@ angular.module('apacheZeppelinGsocApp').controller('ChartCtrl', function($scope,
     //Checking chart requirement is completed
     var myNewChart = {};
     var myChartType = ChartMetaService.getChartType();
-    console.log(myChartType);
-    switch (ChartMetaService.getChartLib()) {
-      case 'NVD3Chart':
-        //set data for NVD3
-        myNewChart = ChartService.getNVD3Chart(myChartType);
-        vm.data = myNewChart.viewModel.data;
-        vm.options = myNewChart.viewModel.options;
-        break;
-      case 'highChart':
-        myNewChart = ChartService.getHighChart(myChartType);
-        vm.chartConfig = myNewChart.viewModel;
-        break;
-      case 'googleChart':
-        myNewChart = ChartService.getGoogleChart(myChartType);
-        vm.chart = myNewChart.viewModel;
-        break;
+    var chartService = ChartMetaService.getChartService();
+    if (chartService !== null) {
+      myNewChart = ChartService[chartService](myChartType);
+      vm.chart = myNewChart.viewModel;
+      if (myNewChart.model) {
+        renderChart(myNewChart.model, data);
+      }
     }
-    if (myNewChart.model) {
-      renderChart(myNewChart.model, data);
-    }
-    //NVD3 axis update
   }
 
   function getData(fileName) {
@@ -85,7 +73,7 @@ angular.module('apacheZeppelinGsocApp').controller('ChartCtrl', function($scope,
   var active = {
     'dataButton': false,
     'chartLibraryButton': false,
-    'chartTypeButton': false
+    'chartTypeButton': 'Bar'
   };
 
   function setButtonActive(set, type) {

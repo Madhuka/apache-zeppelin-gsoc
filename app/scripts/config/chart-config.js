@@ -11,14 +11,17 @@ angular.module('apacheZeppelinGsocApp')
   .constant('chartConfig', {
     'libraryName': [{
       'library': 'highChart',
+      'service': 'getHighChart',
       'template': 'views/charts/highchart.html'
     }, {
       'library': 'NVD3Chart',
+      'service': 'getNVD3Chart',
       'template': 'views/charts/nvd3chart.html'
     }, {
       'library': 'googleChart',
+      'service': 'getGoogleChart',
       'template': 'views/charts/googlechart.html'
     }],
     'dataFiles': ['car', 'bike'],
-    'chartTypes': ['Line', 'Bar']
+    'chartTypes': ['Line', 'Bar','Area']
   });

@@ -4,25 +4,42 @@
  * @name apacheZeppelinGsocApp.HighChartFactory 
  * @description
  * # Extending Gobal Chart Factory for High Chart Model
+ *You can find high chart api in http://api.highcharts.com/highcharts#exporting
  *
  */
 angular.module('apacheZeppelinGsocApp').factory('HighChartFactory', function(
   ChartFactory) {
   var ChartList = {
     'Bar': 'bar',
-    'Line': 'line'
+    'Line': 'line',
+    'Area': 'area'
   };
   //highChart model
   var HighChartChartModel = {
     options: {
+      exporting: {
+        enabled: false
+      },
       chart: {
         type: 'bar'
       }
+    },
+    title: {
+      text:''
+    },
+    subtitle: {
+      text:''
+    },
+    credits: {
+      enabled:false
+    },
+    legend:{
     },
     xAxis: {
       categories: []
     },
     series: [{
+      name: 'populartiy',
       data: []
     }],
     size: {
@@ -38,8 +55,8 @@ angular.module('apacheZeppelinGsocApp').factory('HighChartFactory', function(
   }
 
   function getHighChart(error, rows) {
-    console.log('loading for view');
-    console.log(rows);
+    //console.log('loading for view');
+    //console.log(rows);
     HighChartChartModel.series[0].data = rows;
   }
 
@@ -66,7 +83,7 @@ angular.module('apacheZeppelinGsocApp').factory('HighChartFactory', function(
   var highAxisLabels = {};
 
   function getHighYaxis(error, rows) {
-    console.log(rows);
+    //console.log(rows);
     highAxisLabels = rows;
     HighChartFactory.viewModel.xAxis.categories = highAxisLabels;
   }
